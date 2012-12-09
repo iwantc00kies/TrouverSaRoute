@@ -1,0 +1,23 @@
+Numero 	Nom	Arrêt	Type
+A	Aéroport-Hôpital	Aéroport	Bus
+A	Aéroport-Hôpital	IUT	Bus
+A	Aéroport-Hôpital	Saint-Yves	Bus
+A	Aéroport-Hôpital	Médiathèque	Bus
+A	Aéroport-Hôpital	Gare	Bus
+A	Aéroport-Hôpital	Hôpital	Bus
+B	Servel-Saint-Marc	Servel	Bus
+B	Servel-Saint-Marc	Kerligonan	Bus
+B	Servel-Saint-Marc	Saint-Yves	Bus
+B	Servel-Saint-Marc	Mediathèque	Bus
+B	Servel-Saint-Marc	Kermaria	Bus
+B	Servel-Saint-Marc	Maison des Sports	Bus
+B	Servel-Saint-Marc	Saint-Marc	Bus
+C	IUT-Loguivy	IUT	Bus
+C	IUT-Loguivy	Rusquet	Bus
+C	IUT-Loguivy	Troquéry	Bus
+C	IUT-Loguivy	Saint-Marc	Bus
+C	IUT-Loguivy	Sécurité Sociale	Bus
+C	IUT-Loguivy	Kermaria	Bus
+C	IUT-Loguivy	Gare	Bus
+C	IUT-Loguivy	Bel-Air	Bus
+C	IUT-Loguivy	Loguivy	Bus
