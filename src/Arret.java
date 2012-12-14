@@ -21,7 +21,7 @@ public class Arret {
 	}
 
 	public void setEstAccessible(String estAccessible) {
-		final String[] ok = new String[] {"O","o","Oui","oui", "y", "Y", "Yes", "yes"};
+		final String[] ok = new String[] {"O","o","Oui","oui", "y", "Y", "Yes", "yes", "ok", "OK"};
 
 		if(Arrays.asList(ok).contains(estAccessible)) {
 			this.estAccessible = true;
@@ -104,11 +104,5 @@ public class Arret {
 	public void setLignes(LinkedList<String> lignes) {
 		this.lignes = lignes;
 	}
-
-
-
-
-
-
 
 }

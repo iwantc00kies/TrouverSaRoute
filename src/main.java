@@ -3,9 +3,6 @@ import java.util.LinkedList;
 
 public class main {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		LinkedList<Ligne> mesLignes;
 		
