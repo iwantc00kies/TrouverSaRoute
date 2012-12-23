@@ -1,6 +1,5 @@
 import java.util.LinkedList;
 
-
 public class Ligne {
 
 	private String numero;

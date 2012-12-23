@@ -3,7 +3,7 @@ import java.util.LinkedList;
 
 
 public class Arret {
-	
+
 	protected int numero;
 	protected String nom;
 	protected LinkedList<String> lignes;
@@ -13,27 +13,25 @@ public class Arret {
 	protected String mobilier;
 	protected int codeCommune;
 
-	
+
 	Arret(String nom) {
 		setNom(nom);
 		lignes = new LinkedList<String>();
 		coord = new WGS84();
 	}
-	
+
 	public void setEstAccessible(String estAccessible) {
-		final String[] ok = new String[] {"O","o","Oui","oui", "y", "Y", "Yes", "yes"};
-		//final String[] ko = new String[] {"N","n","Non","non", "No", "no"};
-		
-		if(Arrays.asList(ok).contains(estAccessible))
-		{
+		final String[] ok = new String[] {"O","o","Oui","oui", "y", "Y", "Yes", "yes", "ok", "OK"};
+
+		if(Arrays.asList(ok).contains(estAccessible)) {
 			this.estAccessible = true;
 		}
 		else {
 			this.estAccessible = false;
 		}
 	}
-	
-	
+
+
 	public void Afficher(){
 		System.out.println("Numero : " + numero + " \t\tNom : " + nom + "\t\t coordonnees : " + coord.toString());
 		System.out.println("Accessible : " + estAccessible + " \t\tAbrite : " + estAbrite + " \t\t Mobilier : " + mobilier + " \t\t codeCommune : " + codeCommune);	
@@ -42,7 +40,7 @@ public class Arret {
 			System.out.println("\t\t\t  " + ligne);
 		}
 	}
-	
+
 	public String getNom() {
 		return nom;
 	}
@@ -106,11 +104,5 @@ public class Arret {
 	public void setLignes(LinkedList<String> lignes) {
 		this.lignes = lignes;
 	}
-	
-	
-	
-	
-	
 
-	
 }
