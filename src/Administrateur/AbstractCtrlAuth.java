@@ -11,12 +11,13 @@ public abstract class AbstractCtrlAuth {
 		this.model = model;
 	}
 	
-	public void doTheyMatch(String username, String password) {
-		this.username = username;
-		this.password = password;
-		control();
+	public boolean doTheyMatch(String username, String password) {
+		this.username 		= username;
+		this.password 		= password;
+		this.realPassword 	= model.retrievePasswordOf(username);
+		return control();
 	}
 	
-	abstract void control();
+	abstract boolean control();
 	
 }

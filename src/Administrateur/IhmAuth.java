@@ -36,6 +36,8 @@ public class IhmAuth extends JFrame implements Observer {
 
 	public IhmAuth(AbstractCtrlAuth controler) {
 
+		this.controler = controler;
+		
 		this.setSize(240, 260);
 		this.setTitle("Authentification");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,8 +47,7 @@ public class IhmAuth extends JFrame implements Observer {
 		//	    initComposant();
 
 		initLogin();
-
-		this.controler = controler;             
+       
 		this.setContentPane(container);
 		this.setVisible(true);
 
@@ -103,8 +104,7 @@ public class IhmAuth extends JFrame implements Observer {
 			String value1 = text1.getText();
 			String value2 = text2.getText();
 			
-			
-			if (value1.equals("roseindia") && value2.equals("roseindia")) {
+			if ( controler.doTheyMatch(value1, value2) ) {
 				IhmAuthNicolas page=new IhmAuthNicolas();
 				page.setVisible(true);
 				JLabel label = new JLabel("Welcome:"+value1);
@@ -114,7 +114,6 @@ public class IhmAuth extends JFrame implements Observer {
 				System.out.println("enter the valid username and password");
 				JOptionPane.showMessageDialog(SUBMIT, "Incorrect login or password", "Error", JOptionPane.ERROR_MESSAGE);
 			}
-
 
 		}
 

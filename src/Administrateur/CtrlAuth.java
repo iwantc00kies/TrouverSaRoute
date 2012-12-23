@@ -7,10 +7,10 @@ public class CtrlAuth extends AbstractCtrlAuth {
 	}
 
 	@Override
-	void control() {
-		if (this.password != this.realPassword) {
-			// TODO
-		}
+	boolean control() {
+		
+		return ( this.password.compareTo(this.realPassword) == 0 );
+		
 	}
 
 }
