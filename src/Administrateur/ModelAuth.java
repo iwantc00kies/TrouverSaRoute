@@ -13,10 +13,10 @@ public class ModelAuth extends AbstractModelAuth {
 
 	String retrievePasswordOf(String username) { 
 		
-		String realPassword = null;
+		String realPassword = "";
 		Iterator<CompteAdmin> itr = mesComptes.iterator();
 		
-		while ( (realPassword == null) && (itr.hasNext()) ) {
+		while ( (realPassword.isEmpty()) && (itr.hasNext()) ) {
 			
 			CompteAdmin admin = itr.next();
 			
@@ -25,6 +25,12 @@ public class ModelAuth extends AbstractModelAuth {
 			}	
 		}
 		return realPassword;
+	}
+
+	@Override
+	void addCompteAdmin(CompteAdmin compte) {
+		this.mesComptes.add( compte );
+		
 	}
 
 }

@@ -1,6 +1,7 @@
 package Administrateur;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -21,8 +22,8 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
 public class IhmAuth extends JFrame implements Observer {
-
-	private JPanel container;
+	
+	private JPanel loginPanel;	
 	private FlowLayout layout = new FlowLayout();
 	private JLabel warning;
 
@@ -39,21 +40,19 @@ public class IhmAuth extends JFrame implements Observer {
 		this.controler = controler;
 		
 		this.setSize(240, 260);
-		this.setTitle("Authentification");
+		this.setTitle("Administration");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
-
-		//	    initComposant();
-
-		initLogin();
+		
+		setLoginPanel();
        
-		this.setContentPane(container);
+		this.setContentPane(this.loginPanel);
 		this.setVisible(true);
 
 	}
 
-	private void initLogin() {
+	private void setLoginPanel() {
 
 		label1 = new JLabel("Username:");
 		text1 = new JTextField(15);
@@ -63,33 +62,24 @@ public class IhmAuth extends JFrame implements Observer {
 
 		SUBMIT=new JButton("SUBMIT");
 
-		container = new JPanel(new GridLayout(3,1));
-		container.add(label1);
-		container.add(text1);
-		container.add(label2);
-		container.add(text2);
-		container.add(SUBMIT);
-		add(container, BorderLayout.CENTER);
+		loginPanel = new JPanel(new GridLayout(3,1));
+		loginPanel.add(label1);
+		loginPanel.add(text1);
+		loginPanel.add(label2);
+		loginPanel.add(text2);
+		loginPanel.add(SUBMIT);
+		add(loginPanel, BorderLayout.CENTER);
 		
 		SUBMIT.addActionListener(new SubmitListener());
 
 	}
 
-	private void initComposant() {
-
-		JTextField loginTextField = new JTextField(10);
-		JPasswordField loginPasswordField = new JPasswordField(10);
-		JButton loginButton = new JButton("Ok");
-
-		container.setLayout(layout);
-		container.add(new JLabel("Login:"));
-		container.add(loginTextField);
-		container.add(new JLabel("Password:"));
-		container.add(loginPasswordField);
-		container.add(loginButton);
-
-		loginButton.addActionListener(new SubmitListener());
-
+	private void resetPage() {
+		this.removeAll();
+		System.out.print("resetting...");
+		JPanel loginPanel = new JPanel();
+		loginPanel.revalidate();
+		loginPanel.repaint();
 	}
 
 	public void setLabel(String message) {
@@ -101,17 +91,21 @@ public class IhmAuth extends JFrame implements Observer {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 
-			String value1 = text1.getText();
-			String value2 = text2.getText();
+			String username = text1.getText();
+			String password = text2.getText();
 			
-			if ( controler.doTheyMatch(value1, value2) ) {
-				IhmAuthNicolas page=new IhmAuthNicolas();
-				page.setVisible(true);
-				JLabel label = new JLabel("Welcome:"+value1);
-				page.getContentPane().add(label);
+			if ( controler.doTheyMatch(username, password) ) {
+				
+				
+				resetPage();
+				//IhmAuthNicolas page = new IhmAuthNicolas();
+				//page.setVisible(true);
+				//JLabel label = new JLabel("Welcome:"+username);
+				//page.getContentPane().add(label);
+				
 			}
 			else{
-				System.out.println("enter the valid username and password");
+				System.out.println("Enter an invalid username and password");
 				JOptionPane.showMessageDialog(SUBMIT, "Incorrect login or password", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 

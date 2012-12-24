@@ -9,7 +9,7 @@ public abstract class AbstractModelAuth {
 	public AbstractModelAuth() {
 		
 			// Init des comptes
-			this.mesComptes.add( new CompteAdmin("admin", "password" ) );
+			this.addCompteAdmin( new CompteAdmin("admin", "password" ) );
 			
 	}
 	
@@ -18,5 +18,7 @@ public abstract class AbstractModelAuth {
 	}
 	
 	abstract String retrievePasswordOf(String username);
+	
+	abstract void addCompteAdmin(CompteAdmin compte);
 
 }

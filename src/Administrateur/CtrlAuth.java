@@ -9,7 +9,7 @@ public class CtrlAuth extends AbstractCtrlAuth {
 	@Override
 	boolean control() {
 		
-		return ( this.password.compareTo(this.realPassword) == 0 );
+		return (this.password.compareTo(this.realPassword) == 0 );
 		
 	}
 
