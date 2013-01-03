@@ -18,6 +18,7 @@ public class main {
 		for(Arret arret : mesArrets){
 			arret.Afficher();
 		}
+		
 
 	}
 

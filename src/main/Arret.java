@@ -23,7 +23,7 @@ public class Arret {
 	}
 
 	public void setEstAccessible(String estAccessible) {
-		final String[] ok = new String[] {"O","o","Oui","oui", "y", "Y", "Yes", "yes", "ok", "OK"};
+		final String[] ok = new String[] {"O","o","Oui","oui", "y", "Y", "Yes", "yes"};
 
 		if(Arrays.asList(ok).contains(estAccessible)) {
 			this.estAccessible = true;
@@ -35,14 +35,25 @@ public class Arret {
 
 
 	public void Afficher(){
+		int i = 0;
 		System.out.println("Numero : " + numero + " \t\tNom : " + nom + "\t\t coordonnees : " + coord.toString());
 		System.out.println("Accessible : " + estAccessible + " \t\tAbrite : " + estAbrite + " \t\t Mobilier : " + mobilier + " \t\t codeCommune : " + codeCommune);	
-		System.out.println("\t\t\tArrets:");
+		System.out.println("\t\t\tLigne:");
 		for(String ligne : lignes){
-			System.out.println("\t\t\t  " + ligne);
+			i ++;
+			System.out.println("\t\t\t  " +"ligne : " + i + " " + ligne);
 		}
 	}
 
+	
+	public double distance(Arret a) {
+		double xB = Double.valueOf(this.coord.x);
+		double yB = Double.valueOf(this.coord.y);
+		double xA = Double.valueOf(a.coord.x);
+		double yA = Double.valueOf(a.coord.y);	
+		return Math.sqrt( Math.pow(xA - xB, 2) + Math.pow(yA - yB, 2) );
+	}
+	
 	public String getNom() {
 		return nom;
 	}
@@ -106,5 +117,11 @@ public class Arret {
 	public void setLignes(LinkedList<String> lignes) {
 		this.lignes = lignes;
 	}
+
+
+
+
+
+
 
 }

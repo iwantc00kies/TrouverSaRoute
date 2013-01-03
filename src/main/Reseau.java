@@ -8,9 +8,9 @@ public class Reseau {
 	private LinkedList<Arret> mesArrets;
 	private LinkedList<Ligne> mesLignes;
 	
-	Reseau() {
-		setMesArrets(new LinkedList<Arret>(null));
-		setMesLignes(new LinkedList<Ligne>(null));
+	public Reseau() {
+		setMesArrets(new LinkedList<Arret>());
+		setMesLignes(new LinkedList<Ligne>());
 	}
 	
 	public LinkedList<Ligne> getMesLignes() {
@@ -28,22 +28,21 @@ public class Reseau {
 	public void setMesArrets(LinkedList<Arret> mesArrets) {
 		this.mesArrets = mesArrets;
 	}
-	
-	
-	void chargerLigne(String fichier) {
-		csv.csvRead("/users/elo/nha/Documents/TSR/lignes.csv");
+		
+	public void meilleurChemin() {
 		
 	}
 	
-	void modifier() {
-		
+	// retourne un chemin arbitraire de test entre Aeroport et Troquary
+	public LinkedList<Arret> testRecherche() {
+		LinkedList<Arret> meilleurChemin = new LinkedList<Arret>();
+		meilleurChemin.add(mesArrets.get(0));
+		meilleurChemin.add(mesArrets.get(1));		
+		meilleurChemin.add(mesArrets.get(11));	
+		meilleurChemin.add(mesArrets.get(12));
+		return meilleurChemin;
 	}
-
-	void A_Star() {
-		
-	
-	}
-
+ 
 	
 	
 }
