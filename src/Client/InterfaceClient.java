@@ -19,17 +19,34 @@ import main.Reseau;
 public class InterfaceClient extends JFrame {
 
 	private Reseau reseauModel;
- 
+
 	private Container panel;
 	private JPanel centerPanel = new JPanel();
 	private JButton searchButton = new JButton("Rechercher");
-	//private JButton quitButton = new JButton("Quitter");
-	private JComboBox choixDepart = new JComboBox();
-	private JComboBox choixArrivee = new JComboBox();
 	private JLabel titre = new JLabel("Interface Client");
 	private JLabel labelDepart= new JLabel("Arrêt de départ");
 	private JLabel labelArrivee= new JLabel("Arrêt d'arrivée");	
-   
+
+	private JComboBox choixDepart = new JComboBox();
+	private JComboBox choixArrivee = new JComboBox();
+
+
+	/**
+	 * 
+	 * @return le nom de l'arret de depart
+	 */
+	public String getChoixDepart() {
+		return (String) choixDepart.getSelectedItem();
+	}
+
+	/**
+	 * 
+	 * @return le nom de l'arret d'arrivee
+	 */
+	public String getChoixArrivee() {
+		return (String) choixArrivee.getSelectedItem();
+	}
+
 
 	/**
 	 * Constructeur de le vue InterfaceClient
@@ -47,7 +64,7 @@ public class InterfaceClient extends JFrame {
 		setVisible(true);
 	}
 
-	
+
 	/**
 	 * Initialise les composants et le layout de la classe
 	 */
@@ -62,7 +79,7 @@ public class InterfaceClient extends JFrame {
 		panel = this.getContentPane();
 
 		panel.add(titre, BorderLayout.NORTH);
- 
+
 		// choix des stations de depart/arrivee
 		centerPanel.setLayout(new GridLayout(0,2));		// 2 col, unlimited rows
 		centerPanel.add(labelDepart);
@@ -70,14 +87,14 @@ public class InterfaceClient extends JFrame {
 		centerPanel.add(choixDepart);
 		centerPanel.add(choixArrivee);
 		panel.add(centerPanel, BorderLayout.CENTER);
- 
+
 		// bouton de recherche
 		panel.add(searchButton, BorderLayout.SOUTH);
 	}
 
-	
-	
-	
+
+
+
 	/** Charge une liste d'arrêts dans les ComboBox
 	 * @param Arrets		la liste des arrets 
 	 * **/
@@ -93,8 +110,8 @@ public class InterfaceClient extends JFrame {
 	/** Ajoute un ActionListener au boutton "Rechercher"
 	 * @param sal		l'instance d'ActionListener a ajouter
 	 * **/
-    public void addSearchButtionActionListener(ActionListener sal) {
-       this.searchButton.addActionListener(sal);
-    }
+	public void addSearchButtionActionListener(ActionListener sal) {
+		this.searchButton.addActionListener(sal);
+	}
 
 }

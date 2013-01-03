@@ -15,20 +15,22 @@ public class InterfaceResultatRecherche extends JFrame {
 
 	/**
 	 * Affiche une nouvelle fenetre avec les arrets contenus dans resultat
+	 * @param depart 		le nom de l'arret de depart
+	 * @param arrivee 		le nom de l'arret d'arrivee
 	 * @param resultat		le resultat a afficher dans la fenetre
 	 */
-	public InterfaceResultatRecherche(LinkedList<Arret> resultat){
+	public InterfaceResultatRecherche(String depart, String arrivee, LinkedList<Arret> resultat){
 
 		// parametres generaux
 		 
 		setTitle("Resultats de la recherche");
-		setSize(resultat.size()*200, 200);		// change la taille en fonction du nombre de resultats
+		setSize(resultat.size()*200, 400);		// change la taille en fonction du nombre de resultats
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		Container panel = this.getContentPane();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-		
+		panel.add(new JLabel("Depart : " + depart + "          Arrivée : " +  arrivee));
 		for (Arret arret : resultat) {
 			panel.add(new JLabel(arret.getString()));
 		}

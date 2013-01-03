@@ -2,6 +2,8 @@ package main;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Field;
+
 import Client.InterfaceClient;
 import Client.InterfaceResultatRecherche;
 
@@ -18,16 +20,18 @@ public class Controller {
 		this.modeleReseau = reseau;
 		this.vueClient = client;
 		
-		
+
 		
 		// comportement du bouton Rechercher de la vue client
 		vueClient.addSearchButtionActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 		          // when the research button is clicked, we launch a fake research
 		          //creation d'une nouvelle fenetre pour visualiser le resultat
-		          new InterfaceResultatRecherche(modeleReseau.testRechercheMeilleurChemin());
+
+				
+				
+		          new InterfaceResultatRecherche(vueClient.getChoixDepart(), vueClient.getChoixArrivee(), modeleReseau.testRechercheMeilleurChemin());
 			}
 		});
 		
