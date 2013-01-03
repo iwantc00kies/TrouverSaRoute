@@ -7,5 +7,19 @@ public class PointInteret extends Arret{
 	private String nomSite;
 	private String descriptif;
 	//private String type;	
+	
+	
+	public String getNomSite() {
+		return nomSite;
+	}
+	public void setNomSite(String nomSite) {
+		this.nomSite = nomSite;
+	}
+	public String getDescriptif() {
+		return descriptif;
+	}
+	public void setDescriptif(String descriptif) {
+		this.descriptif = descriptif;
+	}
 
 }

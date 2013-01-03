@@ -1,11 +1,7 @@
 package Client;
 
-import java.awt.Component;
 import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.LayoutManager;
 import java.util.LinkedList;
-
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -16,6 +12,11 @@ import main.Arret;
 /** classe affichant le resultat de la recherche passee en parametres **/
 public class InterfaceResultatRecherche extends JFrame {
 
+
+	/**
+	 * Affiche une nouvelle fenetre avec les arrets contenus dans resultat
+	 * @param resultat		le resultat a afficher dans la fenetre
+	 */
 	public InterfaceResultatRecherche(LinkedList<Arret> resultat){
 
 		// parametres generaux

@@ -2,13 +2,8 @@ package Client;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.Panel;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.LinkedList;
 
 import javax.swing.JButton;
@@ -23,7 +18,7 @@ import main.Reseau;
 // implements PropertyChangeListener 
 public class InterfaceClient extends JFrame {
 
-	private Reseau reseau;
+	private Reseau reseauModel;
  
 	private Container panel;
 	private JPanel centerPanel = new JPanel();
@@ -36,18 +31,26 @@ public class InterfaceClient extends JFrame {
 	private JLabel labelArrivee= new JLabel("Arrêt d'arrivée");	
    
 
-	public InterfaceClient(Reseau res) {
-		//reseau : le réseau dont on veut suivre les notifications
-		this.reseau = res;
+	/**
+	 * Constructeur de le vue InterfaceClient
+	 * @param reseau		le modele dont on cette classe est la vue
+	 */
+	public InterfaceClient(Reseau reseau) {
+		//reseau : le réseau dont on veut suivre les modifications
+		// patern observer/observable? 
+		this.reseauModel = reseau;
 
 		initialiserFenetre();
-
-		chargerArrets(res.getMesArrets());
+		chargerArrets(reseauModel.getMesArrets());
 
 		//rendu visible a la fin   
 		setVisible(true);
 	}
 
+	
+	/**
+	 * Initialise les composants et le layout de la classe
+	 */
 	private void initialiserFenetre() {
 
 		// parametres generaux
@@ -74,6 +77,10 @@ public class InterfaceClient extends JFrame {
 
 	
 	
+	
+	/** Charge une liste d'arrêts dans les ComboBox
+	 * @param Arrets		la liste des arrets 
+	 * **/
 	public void chargerArrets(LinkedList<Arret> Arrets) {
 		// on charge tous les arrets comme choix de depart/arrivee
 		for(Arret arret : Arrets) {
@@ -83,6 +90,9 @@ public class InterfaceClient extends JFrame {
 	}
 
 
+	/** Ajoute un ActionListener au boutton "Rechercher"
+	 * @param sal		l'instance d'ActionListener a ajouter
+	 * **/
     public void addSearchButtionActionListener(ActionListener sal) {
        this.searchButton.addActionListener(sal);
     }

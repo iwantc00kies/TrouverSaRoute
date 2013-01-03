@@ -45,11 +45,19 @@ public class Arret {
 		}
 	}
 
+	/**
+	 * Retourne une chaine correspondant a la maniere d'afficher l'arret
+	 * @return		le nom de l'arret
+	 */
 	public String getString() {
 		return (nom);
 	}
 	
-	
+	/**
+	 * Calcule la distance entre deux arrets
+	 * @param a		le deuxieme arret
+	 * @return		la distance entre deux arrets
+	 */
 	public double distance(Arret a) {
 		double xB = Double.valueOf(this.coord.x);
 		double yB = Double.valueOf(this.coord.y);
@@ -121,11 +129,6 @@ public class Arret {
 	public void setLignes(LinkedList<String> lignes) {
 		this.lignes = lignes;
 	}
-
-
-
-
-
 
 
 }
