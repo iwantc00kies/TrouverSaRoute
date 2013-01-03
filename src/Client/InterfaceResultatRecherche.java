@@ -19,7 +19,7 @@ public class InterfaceResultatRecherche extends JFrame {
 	 * @param arrivee 		le nom de l'arret d'arrivee
 	 * @param resultat		le resultat a afficher dans la fenetre
 	 */
-	public InterfaceResultatRecherche(String depart, String arrivee, LinkedList<Arret> resultat){
+	public InterfaceResultatRecherche(LinkedList<Arret> resultat){
 
 		// parametres generaux
 		 
@@ -30,7 +30,7 @@ public class InterfaceResultatRecherche extends JFrame {
 		
 		Container panel = this.getContentPane();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-		panel.add(new JLabel("Depart : " + depart + "          Arrivée : " +  arrivee));
+		panel.add(new JLabel("Depart : " + resultat.getFirst().getString() + "          Arrivée : " +  resultat.getLast().getString()));
 		for (Arret arret : resultat) {
 			panel.add(new JLabel(arret.getString()));
 		}

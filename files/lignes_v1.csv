@@ -1,0 +1,17 @@
+Numero 	Nom	Arret	Type
+A	Aeroport-Atmo	Aeroport	Bus
+A	Aeroport-Atmo	ENSSAT	Bus
+A	Aeroport-Atmo	Mairie	Bus
+A	Aeroport-Atmo	Gare	Bus
+A	Aeroport-Atmo	Eglise	Bus
+A	Aeroport-Atmo	Atmo	Bus
+B	ENSSAT-CiteU	ENSSAT	Bus
+B	ENSSAT-CiteU	MacDO	Bus
+B	ENSSAT-CiteU	Leclerc	Bus
+B	ENSSAT-CiteU	IUT	Bus
+B	ENSSAT-CiteU	CiteU	Bus
+C	IUT-Chapelier	IUT	Bus
+C	IUT-Chapelier	ENSSAT	Bus
+C	IUT-Chapelier	Securite Sociale	Bus
+C	IUT-Chapelier	Gare	Bus
+C	IUT-Chapelier	Chapelier	Bus

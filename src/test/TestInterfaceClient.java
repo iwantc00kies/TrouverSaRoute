@@ -20,6 +20,8 @@ public class TestInterfaceClient {
 		//controleur
 		Controller cont = new Controller(res, client);
 		
+		//ensuite test de modification du réseau (normalement depuis l'interface admin)
+ 
 	}
 	
 	 

@@ -9,8 +9,8 @@ public class Reseau {
 	private LinkedList<Ligne> mesLignes;
 	
 	public Reseau(String cheminLignesCSV, String cheminArretsCSV) {
-		setMesLignes(csv.csvCreerLignes(cheminLignesCSV));
-		setMesArrets(csv.csvCreerArrets(cheminArretsCSV));
+
+		chargerCSV(cheminLignesCSV, cheminArretsCSV);
 	}
 	
 	public LinkedList<Ligne> getMesLignes() {
@@ -30,7 +30,7 @@ public class Reseau {
 	}
 		
 	
-	// retourne un chemin arbitraire de test entre Aeroport et Troquary
+	/** retourne un chemin arbitraire de test entre Aeroport et Troquary **/
 	public LinkedList<Arret> testRechercheMeilleurChemin() {
 		LinkedList<Arret> meilleurChemin = new LinkedList<Arret>();
 		meilleurChemin.add(mesArrets.get(0));
@@ -41,6 +41,16 @@ public class Reseau {
 		// il faudrait les changements aussi...
 	}
  
+	
+	/**
+	 * Charge en memoire les fichiers CSV
+	 * @param cheminLignesCSV		le chemin vers le fichier de lignes
+	 * @param cheminArretsCSV		le chemin vers le fichier d'arrêts
+	 */
+	public void chargerCSV(String cheminLignesCSV, String cheminArretsCSV) {
+			setMesLignes(csv.csvCreerLignes(cheminLignesCSV));
+			setMesArrets(csv.csvCreerArrets(cheminArretsCSV));
+	}
 	
 	
 }
