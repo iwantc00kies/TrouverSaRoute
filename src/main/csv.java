@@ -1,16 +1,13 @@
+package main;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.ListIterator;
+import au.com.bytecode.opencsv.CSVReader;		//http://opencsv.sourceforge.net/
 
 
-import au.com.bytecode.opencsv.CSVReader;
-//http://opencsv.sourceforge.net/
-//http://sourceforge.net/projects/opencsv/files/latest/download
 	
 public class csv {
 
@@ -35,7 +32,7 @@ public class csv {
 	}
 
 	// cree une liste chainee de lignes
-	static LinkedList<Ligne> csvCreerLignes(String filePath){
+	public static LinkedList<Ligne> csvCreerLignes(String filePath){
 
 		boolean estPremier = true;
 
@@ -75,8 +72,6 @@ public class csv {
 					ligneTmp.setNumero(champs[0]); 							//Numéro de ligne
 					ligneTmp.setNom(champs[1]);								//nom
 					ligneTmp.getArrets().add(new Arret(champs[2]));			//arret				
-					//ligneTmp.setType(Ligne.TypeLigne.valueOf(champs[3]));	//type (Bus)
-					//ligneTmp.setType(Ligne.TypeLigne.valueOf(champs[3].toLowerCase().trim()));	//type (Bus)
 					ligneTmp.setType(champs[3]);	//type (Bus)
 				}
 				else {
@@ -94,7 +89,7 @@ public class csv {
 
 
 	//cree une liste chainee d'arrets
-	static LinkedList<Arret> csvCreerArrets(String filePath){
+	public static LinkedList<Arret> csvCreerArrets(String filePath){
 
 		boolean estPremier = true;
 		Arret arretTmp = null;
@@ -116,8 +111,6 @@ public class csv {
 				arretTmp = new Arret(champs[1]);
 				arretTmp.numero = Integer.valueOf(champs[0]);
 				arretTmp.lignes.add(champs[2]);
-				//arretTmp.coord.x = Float.valueOf(champs[3]);
-				//arretTmp.coord.y = Float.valueOf(champs[4]);
 				arretTmp.coord.x = champs[3];
 				arretTmp.coord.y = champs[4];
 				arretTmp.setEstAccessible(champs[5].trim().toLowerCase());

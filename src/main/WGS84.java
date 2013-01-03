@@ -1,6 +1,4 @@
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
+package main;
 
 
 public class WGS84 {
