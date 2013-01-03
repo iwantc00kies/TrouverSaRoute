@@ -20,7 +20,8 @@ import javax.swing.JPanel;
 import main.Arret;
 import main.Reseau;
 
-public class InterfaceClient extends JFrame implements PropertyChangeListener {
+// implements PropertyChangeListener 
+public class InterfaceClient extends JFrame {
 
 	private Reseau reseau;
  
@@ -41,8 +42,7 @@ public class InterfaceClient extends JFrame implements PropertyChangeListener {
 
 		initialiserFenetre();
 
-		// notifié par le réseau
-		//reseau.addChangeListener(this);
+		chargerArrets(res.getMesArrets());
 
 		//rendu visible a la fin   
 		setVisible(true);
@@ -72,31 +72,14 @@ public class InterfaceClient extends JFrame implements PropertyChangeListener {
 		panel.add(searchButton, BorderLayout.SOUTH);
 	}
 
-
-	@Override
-	public void propertyChange(PropertyChangeEvent event) {
-		// TODO
-		// le réseau a changé
-		System.out.println("Changed property: " + event.getPropertyName() + " old:"
-				+ event.getOldValue() + " new: " + event.getNewValue());
-
-		// on recharge le réseau ( la liste des arrêts )
-	}
-
-
-
+	
+	
 	public void chargerArrets(LinkedList<Arret> Arrets) {
 		// on charge tous les arrets comme choix de depart/arrivee
 		for(Arret arret : Arrets) {
 			choixDepart.addItem(arret.getNom());
 			choixArrivee.addItem(arret.getNom());
 		}
-	}
-
-
-	public void lierAuReseau(Reseau res){
-		// notifié par le réseau
-		//res.addChangeListener(this);
 	}
 
 

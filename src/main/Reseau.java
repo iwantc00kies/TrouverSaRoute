@@ -8,9 +8,9 @@ public class Reseau {
 	private LinkedList<Arret> mesArrets;
 	private LinkedList<Ligne> mesLignes;
 	
-	public Reseau() {
-		setMesArrets(new LinkedList<Arret>());
-		setMesLignes(new LinkedList<Ligne>());
+	public Reseau(String cheminLignesCSV, String cheminArretsCSV) {
+		setMesLignes(csv.csvCreerLignes(cheminLignesCSV));
+		setMesArrets(csv.csvCreerArrets(cheminArretsCSV));
 	}
 	
 	public LinkedList<Ligne> getMesLignes() {
