@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
@@ -21,7 +22,9 @@ import main.Reseau;
 
 public class InterfaceClient extends JFrame implements PropertyChangeListener {
 
+	private Reseau reseau;
  
+	private Container panel;
 	private JPanel centerPanel = new JPanel();
 	private JButton searchButton = new JButton("Rechercher");
 	//private JButton quitButton = new JButton("Quitter");
@@ -32,8 +35,9 @@ public class InterfaceClient extends JFrame implements PropertyChangeListener {
 	private JLabel labelArrivee= new JLabel("Arrêt d'arrivée");	
    
 
-	public InterfaceClient() {
-		//reseau : le réseau dont on veut suivre les notifications (pattern observer / observable)
+	public InterfaceClient(Reseau res) {
+		//reseau : le réseau dont on veut suivre les notifications
+		this.reseau = res;
 
 		initialiserFenetre();
 
@@ -52,9 +56,9 @@ public class InterfaceClient extends JFrame implements PropertyChangeListener {
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		Container pane = this.getContentPane();
+		panel = this.getContentPane();
 
-		pane.add(titre, BorderLayout.NORTH);
+		panel.add(titre, BorderLayout.NORTH);
  
 		// choix des stations de depart/arrivee
 		centerPanel.setLayout(new GridLayout(0,2));		// 2 col, unlimited rows
@@ -62,12 +66,10 @@ public class InterfaceClient extends JFrame implements PropertyChangeListener {
 		centerPanel.add(labelArrivee);
 		centerPanel.add(choixDepart);
 		centerPanel.add(choixArrivee);
-		pane.add(centerPanel, BorderLayout.CENTER);
-
+		panel.add(centerPanel, BorderLayout.CENTER);
+ 
 		// bouton de recherche
-		pane.add(searchButton, BorderLayout.SOUTH);
-		
-		// eventuellement JGraph
+		panel.add(searchButton, BorderLayout.SOUTH);
 	}
 
 
@@ -97,5 +99,9 @@ public class InterfaceClient extends JFrame implements PropertyChangeListener {
 		//res.addChangeListener(this);
 	}
 
+
+    public void addSearchButtionActionListener(ActionListener sal) {
+       this.searchButton.addActionListener(sal);
+    }
 
 }

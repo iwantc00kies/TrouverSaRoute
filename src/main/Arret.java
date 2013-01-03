@@ -45,6 +45,10 @@ public class Arret {
 		}
 	}
 
+	public String getString() {
+		return (nom);
+	}
+	
 	
 	public double distance(Arret a) {
 		double xB = Double.valueOf(this.coord.x);

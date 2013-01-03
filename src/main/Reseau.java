@@ -29,18 +29,16 @@ public class Reseau {
 		this.mesArrets = mesArrets;
 	}
 		
-	public void meilleurChemin() {
-		
-	}
 	
 	// retourne un chemin arbitraire de test entre Aeroport et Troquary
-	public LinkedList<Arret> testRecherche() {
+	public LinkedList<Arret> testRechercheMeilleurChemin() {
 		LinkedList<Arret> meilleurChemin = new LinkedList<Arret>();
 		meilleurChemin.add(mesArrets.get(0));
 		meilleurChemin.add(mesArrets.get(1));		
 		meilleurChemin.add(mesArrets.get(11));	
 		meilleurChemin.add(mesArrets.get(12));
 		return meilleurChemin;
+		// il faudrait les changements aussi...
 	}
  
 	
