@@ -1,8 +1,9 @@
 package Administrateur;
 
-public class CtrlAuth extends AbstractCtrlAuth {
 
-	public CtrlAuth(AbstractModelAuth model) {
+public class CtrlAuth extends CtrlAbstractAuth {
+
+	public CtrlAuth(ModelAbstractAuth model) {
 		super ( model );
 	}
 

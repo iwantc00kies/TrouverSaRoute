@@ -1,11 +1,11 @@
 package Administrateur;
 
-public class CompteAdmin {
+public class EntityCompteAdmin {
 	
 	private String username;
 	private String password;
 
-	public CompteAdmin(String username, String password) {
+	public EntityCompteAdmin(String username, String password) {
 		this.setUsername(username);
 		this.setPassword(password);
 	}
