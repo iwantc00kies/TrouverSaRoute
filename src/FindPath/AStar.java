@@ -13,7 +13,7 @@ public class AStar implements FindBestPath {
 	@Override
 	public void findBestPath(Reseau res) {
 
-
+		majArretsSuivants(res.getMesLignes(), res.getMesArrets());
 
 	}
 
