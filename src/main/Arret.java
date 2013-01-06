@@ -16,8 +16,9 @@ public class Arret {
 	protected String mobilier;
 	protected int codeCommune;
 	protected ArrayList<Arret> arretSuivants = new ArrayList<Arret>(1);
-
-	Arret(String nom) {
+	protected ArrayList<Arret> arretPrecedant = new ArrayList<Arret>(1);
+	
+	protected Arret(String nom) {
 		setNom(nom);
 		lignes = new LinkedList<String>();
 		coord = new WGS84();
@@ -44,10 +45,16 @@ public class Arret {
 		for(String ligne : lignes){
 			System.out.println("\t\t\t\t : "+ ligne);
 		}
-		System.out.println("\t\t\tArrets suivants:");
-		for(Arret a : arretSuivants){
-			System.out.println("\t\t\t\t : "+ a.getNom());
+		if(arretSuivants.size()==0){
+			System.out.println("\t\t\t Terminus");
 		}
+		else{
+			System.out.println("\t\t\tArrets suivants:");
+			for(Arret a : arretSuivants){
+				System.out.println("\t\t\t\t - "+ a.getNom());
+			}
+		}
+
 	}
 
 	/**
@@ -72,16 +79,26 @@ public class Arret {
 	}
 
 	
+	
 	/**
 	 * Ajoute un arret à la liste des arrets suivants. Ceci est necessaire pour l'algorithme de recherche.
-	 * @param a 	l'arret suivant a ajouter 
+	 * @param arret 	l'arret suivant a ajouter 
 	 */
-	public void addArretSuivant(Arret a) {
-		this.arretSuivants.add(a);
+	public void addArretSuivant(Arret arret) {
+		this.arretSuivants.add(arret);
 	}
 	
+	/**
+	 * Ajoute un arret à la liste des arrets precedant. Ceci est necessaire pour l'algorithme de recherche.
+	 * @param arret		l'arret precedent a ajouter 
+	 */
+	public void addArretPrecedant(Arret arret) {
+		this.arretPrecedant.add(arret);
+	}
 	
+ 
 	
+	/// getters and setters ///
 	
 	public String getNom() {
 		return nom;
@@ -146,6 +163,10 @@ public class Arret {
 	public void setLignes(LinkedList<String> lignes) {
 		this.lignes = lignes;
 	}
+
+
+
+
 
 
 }

@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import org.junit.internal.runners.statements.Fail;
 
 import main.Arret;
+import main.InterfaceReseau;
 import main.Ligne;
 import main.Reseau;
 
@@ -136,9 +137,10 @@ public class Djikstra implements FindBestPath {
 		}
 	}
 
+ 
 	@Override
-	public void findBestPath(Reseau res) {
-		throw new UnsupportedOperationException("not implemented yet");
+	public void findBestPath(Arret depart, Arret arrivee) {
+		 throw new UnsupportedOperationException("not implemented yet");
 	}
 
 

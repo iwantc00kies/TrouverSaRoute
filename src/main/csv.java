@@ -19,7 +19,7 @@ public class csv {
 		} catch (FileNotFoundException e) {
 			System.out.println("Erreur de lecture du fichier " + filePath);
 		}
-
+	
 		List<String[]> myEntries = null;
 
 		try {
@@ -43,7 +43,7 @@ public class csv {
 		LinkedList<Ligne> mesLignes = new LinkedList<Ligne>();
 
 		
-		String delims = "[	]+";	//delimiteur tabulation
+		String delims = "[\t]+";	//delimiteur tabulation
 
 		
 		//lire fichier
@@ -94,7 +94,7 @@ public class csv {
 		boolean estPremier = true;
 		Arret arretTmp = null;
 		LinkedList<Arret> mesArrets = new LinkedList<Arret>();
-		String delims = "[;]+";	//delimiteur ;
+		String delims = "[;\t]+";	//delimiteur ;
 		
 		//lire fichier
 		List<String[]> mesArretsString = csvRead(filePath);
@@ -117,7 +117,7 @@ public class csv {
 				arretTmp.coord.y = champs[4];
 				arretTmp.setEstAccessible(champs[5].trim().toLowerCase());
 				arretTmp.mobilier = champs[6];
-				arretTmp.codeCommune = Integer.valueOf(champs[7]);
+				arretTmp.codeCommune = Integer.valueOf(champs[champs.length-1]);
 				mesArrets.add(arretTmp);
 			}
 			estPremier = false;

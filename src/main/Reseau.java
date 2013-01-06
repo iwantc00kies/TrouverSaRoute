@@ -11,30 +11,63 @@ public class Reseau implements InterfaceReseau{
 
 	private LinkedList<Arret> mesArrets;
 	private LinkedList<Ligne> mesLignes;
-	private FindBestPath rechercheChemin = new AStar();
-
-	public Reseau(String cheminLignesCSV, String cheminArretsCSV) {
-
-		chargerCSV(cheminLignesCSV, cheminArretsCSV);
-		rechercheChemin.findBestPath(this);
-		//majArretsSuivants();
-	}
-
-	public LinkedList<Ligne> getMesLignes() {
+	private FindBestPath rechercheChemin;
+	
+	
+	///  getters and setters   ///
+	public LinkedList<Ligne> getLignes() {
 		return mesLignes;
 	}
 
-	public void setMesLignes(Collection<Ligne> mesLignes) {
+	public void setLignes(Collection<Ligne> mesLignes) {
 		this.mesLignes = (LinkedList<Ligne>) mesLignes;
 	}
 
-	public LinkedList<Arret> getMesArrets() {
+	public LinkedList<Arret> getArrets() {
 		return mesArrets;
 	}
 
-	public void setMesArrets(Collection<Arret> mesArrets) {
+	public void setArrets(Collection<Arret> mesArrets) {
 		this.mesArrets = (LinkedList<Arret>) mesArrets;
 	}
+
+	
+	/**
+	 * Construct a new network
+	 * @param cheminLignesCSV
+	 * @param cheminArretsCSV
+	 */
+	public Reseau(String cheminLignesCSV, String cheminArretsCSV) {
+
+		chargerCSV(cheminLignesCSV, cheminArretsCSV);
+		majArretsSuivants();
+		rechercheChemin= new AStar(this);
+	}
+	
+
+	/**
+	 * Recherche un chemin entre deux Arrets
+	 * @param depart		le nom de l'arret de depart
+	 * @param Arrivee		le nom de l'arret d'arrivee
+	 */
+	public void findPath(String depart, String Arrivee){
+		Arret ArretDepart = null;
+		Arret ArretArrivee = null;
+		try {
+			ArretDepart = arretHelper.getArretbyName(depart, this.mesArrets);
+			ArretArrivee = arretHelper.getArretbyName(depart, this.mesArrets);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		if(ArretDepart == null || ArretArrivee == null){
+			System.out.println("Arrets introuvables");
+		}
+		else {
+			rechercheChemin.findBestPath(ArretDepart, ArretArrivee);
+		}
+	}
+	
 
 
 	/** retourne un chemin arbitraire de test entre Aeroport et Troquary **/
@@ -55,43 +88,84 @@ public class Reseau implements InterfaceReseau{
 	 * @param cheminArretsCSV		le chemin vers le fichier d'arrêts
 	 */
 	public void chargerCSV(String cheminLignesCSV, String cheminArretsCSV) {
-		setMesLignes(csv.csvCreerLignes(cheminLignesCSV));
-		setMesArrets(csv.csvCreerArrets(cheminArretsCSV));
+		setLignes(csv.csvCreerLignes(cheminLignesCSV));
+		setArrets(csv.csvCreerArrets(cheminArretsCSV));
 	}
-//
+
+	/**
+	 * Met a jour les arrets suivants de chaque arret
+	 */
+	public void majArretsSuivants() {
+		for (Ligne ligne : mesLignes) {
+			LinkedList<Arret> arrets = ligne.getArrets();
+			for (int i=0 ; i<arrets.size()-1 ; i++) {
+				Arret arretToUpdate;
+				try {
+					arretToUpdate = arretHelper.getArretbyName(arrets.get(i).getNom(), this.mesArrets);
+					arretToUpdate.addArretSuivant(arrets.get(i+1));
+				} catch (Exception e) {
+					System.out.println(arrets.get(i).getNom());
+					for (Arret a : mesArrets) {
+						System.out.println(a.getNom());
+					}
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
 //	/**
-//	 * Met a jour les arrets suivant de chaque arret
+//	 * Met a jour les arrets precedents de chaque arret
 //	 */
-//	public void majArretsSuivants() {
+//	public void majArretsPrecedents() {
 //		for (Ligne ligne : mesLignes) {
 //			LinkedList<Arret> arrets = ligne.getArrets();
 //			for (int i=0 ; i<arrets.size()-1 ; i++) {
 //				Arret arretToUpdate;
 //				try {
-//					arretToUpdate = getArretbyName(arrets.get(i).getNom());
+//					arretToUpdate = arretHelper.getArretbyName(arrets.get(i).getNom(), this.mesArrets);
 //					arretToUpdate.addArretSuivant(arrets.get(i+1));
 //				} catch (Exception e) {
-//					System.out.println("Erreur de coherence dans les donnees d'entree ?");
+//					System.out.println(arrets.get(i).getNom());
+//					for (Arret a : mesArrets) {
+//						System.out.println(a.getNom());
+//					}
 //					e.printStackTrace();
 //				}
 //			}
 //		}
-//
 //	}
-//	
-//	
-//	/**
-//	 * Recherche un arret par son nom
-//	 * @param name			le nom de l'arrêt
-//	 * @return				l'arret recherche
-//	 * @throws Exception	Exception "Arret inexistant" si l'arrêt n'est pas dans la liste
-//	 */
-//	private Arret getArretbyName(String name) throws Exception {
-//		for (Arret a : mesArrets) {
-//			if(a.getNom().equals(name)){
-//				return a;
-//			}
-//		}
-//		throw new Exception("Arret inexistant");
-//	}
+	
+	
+	/**
+	 * Met a jour les arrets precedents de chaque arret
+	 */
+	public void majArretsPrecedents() {
+		for (Ligne ligne : mesLignes) {
+			LinkedList<Arret> arrets = ligne.getArrets();
+			for (int i=0 ; i<arrets.size() ; i++) {
+				Arret arretToUpdate;
+				try {
+					arretToUpdate = arretHelper.getArretbyName(arrets.get(i).getNom(), this.mesArrets);
+					try{
+						arretToUpdate.addArretSuivant(arrets.get(i+1));
+					}
+					catch (Exception e) {}
+					try{
+						arretToUpdate.addArretPrecedant(arrets.get(i-1));
+					}
+					catch (Exception e) {}
+				} catch (Exception e) {
+					System.out.println(arrets.get(i).getNom());
+					for (Arret a : mesArrets) {
+						System.out.println(a.getNom());
+					}
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+ 
+	
+
 }

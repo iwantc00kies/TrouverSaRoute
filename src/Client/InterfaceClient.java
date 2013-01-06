@@ -58,7 +58,7 @@ public class InterfaceClient extends JFrame {
 		this.reseauModel = reseau;
 
 		initialiserFenetre();
-		chargerArrets(reseauModel.getMesArrets());
+		chargerArrets(reseauModel.getArrets());
 
 		//rendu visible a la fin   
 		setVisible(true);
