@@ -70,7 +70,7 @@ public class InterfaceClient extends JFrame  implements Observer{
 
 		initialiserFenetre();
 		chargerArrets(reseauModel.getArrets());
-
+this.
 		//rendu visible a la fin   
 		setVisible(true);
 	}
@@ -131,7 +131,10 @@ public class InterfaceClient extends JFrame  implements Observer{
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		// le reseau a change, on met a jour la liste des arrets
+		choixDepart.removeAllItems();
+		choixArrivee.removeAllItems();
 		chargerArrets(((Reseau) arg0).getArrets());
+		// equivalent a :
 		//chargerArrets(reseauModel.getArrets());
 	}
 

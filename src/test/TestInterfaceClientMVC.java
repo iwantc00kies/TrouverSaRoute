@@ -1,5 +1,8 @@
 package test;
 
+import junit.framework.Assert;
+import main.Arret;
+import main.Ligne;
 import main.Reseau;
 
 import org.junit.Before;
@@ -9,12 +12,11 @@ import Client.ClientController;
 import Client.InterfaceClient;
 
 public class TestInterfaceClientMVC {
-	private Reseau res;
  
-	@Before
-	public void setUp() throws Exception {
+	public static void main(String[] args) {
+
 		// modele 
-		res = new Reseau("./files/lignes.csv", "./files/stations.csv");
+		Reseau res = new Reseau("./files/lignes.csv", "./files/stations.csv");
 
 		//vue 
 		InterfaceClient client =  new InterfaceClient(res);
@@ -22,19 +24,13 @@ public class TestInterfaceClientMVC {
 		//controleur
 		ClientController cont = new ClientController(res, client);
 		
-
-	}
-
- 
-	/**
-	 * Essaie de voir si les modifications du reseau sont bien repercutees
-	 */
-	@Test
-	public void testPattern() {
-
+		res.addObserver(client);
+	
+		Assert.assertEquals(1, res.countObservers());
+		
 		// test de modification du réseau (normalement depuis l'interface admin)
 		// l'interface (vue) doit se mettre a jour
-		res.chargerCSV("", "");
+		res.chargerCSV("./files/lignes_v1.csv", "./files/stations_v1.csv");
+		
 	}
-
 }

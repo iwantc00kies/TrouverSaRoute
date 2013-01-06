@@ -24,7 +24,6 @@ public class Reseau extends Observable implements InterfaceReseau{
 
 	public void setLignes(Collection<Ligne> mesLignes) {
 		this.mesLignes = (LinkedList<Ligne>) mesLignes;
-		notifyObservers();		// le reseau a change, on notifie les vues
 	}
 
 	public LinkedList<Arret> getArrets() {
@@ -33,6 +32,7 @@ public class Reseau extends Observable implements InterfaceReseau{
 
 	public void setArrets(Collection<Arret> mesArrets) {
 		this.mesArrets = (LinkedList<Arret>) mesArrets;
+		setChanged();
 		notifyObservers();		// le reseau a change, on notifie les vues
 	}
 
