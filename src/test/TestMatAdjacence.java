@@ -21,6 +21,7 @@ public class TestMatAdjacence {
 		Djikstra d = new Djikstra(mesArrets, mesLignes);
 		d.afficheMatriceArcsOrientes();
 		// cette matrice indique la distance à l'arrêt suivant pour un arrêt donné
+		// cette matrice n'est pas utilisée dans l'application
 	}
 
 }

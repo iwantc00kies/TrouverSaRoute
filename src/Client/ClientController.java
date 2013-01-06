@@ -23,17 +23,10 @@ public class ClientController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 		          // when the research button is clicked, we launch a fake research
-		          //creation d'une nouvelle fenetre pour visualiser le resultat
+		          // creation d'une nouvelle fenetre pour visualiser le resultat
 		          new InterfaceResultatRecherche(modeleReseau.testRechercheMeilleurChemin());
 			}
-		});
-		
-		// a faire : 
-		// lorsque l'admin change les arrets/lignes sur son interface
-		// le controlleur est prevenu et recharge les arrets du client
-		// 
-		
-		
+		});	
 		
 	}
 

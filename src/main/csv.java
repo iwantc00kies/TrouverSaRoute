@@ -9,6 +9,10 @@ import au.com.bytecode.opencsv.CSVReader;		//http://opencsv.sourceforge.net/
 
 
 	
+/**
+ * Classe permettant de lire les fichiers au format CSV
+ *
+ */
 public class csv {
 
 	static List<String[]> csvRead(String filePath){
@@ -31,7 +35,12 @@ public class csv {
 		return myEntries;
 	}
 
-	// cree une liste chainee de lignes
+
+	/**
+	 * Cree une liste chainee de lignes en fonction d'un fichier CSV
+	 * @param filePath		le chemin du fichier CSV des lignes
+	 * @return				une liste chainee de lignes
+	 */
 	public static LinkedList<Ligne> csvCreerLignes(String filePath){
 
 		boolean estPremier = true;
@@ -88,7 +97,11 @@ public class csv {
 	}
 
 
-	//cree une liste chainee d'arrets
+	/**
+	 * Cree une liste chainee d'arrets en fonction d'un fichier CSV
+	 * @param filePath		le chemin du fichier CSV des arrets
+	 * @return				une liste chainee d'arrets
+	 */
 	public static LinkedList<Arret> csvCreerArrets(String filePath){
 
 		boolean estPremier = true;

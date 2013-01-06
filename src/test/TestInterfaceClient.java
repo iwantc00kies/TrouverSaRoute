@@ -28,13 +28,17 @@ public class TestInterfaceClient {
 
 				//controleur
 				ClientController cont = new ClientController(res, client);
+				
+				//ensuite test de modification du réseau (normalement depuis l'interface admin)
+				// l'interface (vue) doit se mettre a jour
+				
 			}
 		});
 
 	}
 
 
-	//ensuite test de modification du réseau (normalement depuis l'interface admin)
+	
 
 
 

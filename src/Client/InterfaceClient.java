@@ -5,6 +5,8 @@ import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -16,7 +18,11 @@ import main.Arret;
 import main.Reseau;
 
 
-public class InterfaceClient extends JFrame {
+/**
+ * L'interface client, qui est une vue du réseau
+ *
+ */
+public class InterfaceClient extends JFrame  implements Observer{
 
 	/**
 	 * generated serialID
@@ -59,7 +65,7 @@ public class InterfaceClient extends JFrame {
 	 */
 	public InterfaceClient(Reseau reseau) {
 		//reseau : le réseau dont on veut suivre les modifications
-		// patern observer/observable? 
+		// patern observer/observable 
 		this.reseauModel = reseau;
 
 		initialiserFenetre();
@@ -117,6 +123,16 @@ public class InterfaceClient extends JFrame {
 	 * **/
 	public void addSearchButtionActionListener(ActionListener sal) {
 		this.searchButton.addActionListener(sal);
+	}
+
+	/**
+	 * methode appelee par l'observable lorsqu'un changement arrive
+	 */
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		// le reseau a change, on met a jour la liste des arrets
+		chargerArrets(((Reseau) arg0).getArrets());
+		//chargerArrets(reseauModel.getArrets());
 	}
 
 }

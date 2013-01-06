@@ -2,6 +2,11 @@ package main;
 
 import java.util.Collection;
 
+
+/**
+ * Une classe contenant des methodes statiques relatives aux arrets
+ *
+ */
 public class arretHelper {
 	
 	/**

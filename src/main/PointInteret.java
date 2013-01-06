@@ -6,8 +6,8 @@ public class PointInteret extends Arret{
 	}
 	private String nomSite;
 	private String descriptif;
-	//private String type;	
 	
+	///  getters and setters   ///
 	
 	public String getNomSite() {
 		return nomSite;

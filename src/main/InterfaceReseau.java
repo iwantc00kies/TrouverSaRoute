@@ -2,7 +2,10 @@ package main;
 
 import java.util.Collection;
 
-
+/**
+ * Definit les methodes qu'un reseau doit implementer
+ *
+ */
 public interface InterfaceReseau {
 
 	// un reseau doit permettre au minimum qu'on puisse acceder a ses lignes et a ses arrets

@@ -2,21 +2,28 @@ package main;
 
 
 public class WGS84 {
-	//TODO decimal ? String ?
-	//http://stackoverflow.com/questions/433958/java-decimal-string-format
 
 	protected String x;
 	protected String y;
-	//protected NumberFormat df;
 	
 	WGS84(){
 	}
 
+	public double getDoubleX() {
+		return Double.parseDouble(x);
+	}
+	
+	public double getDoubleY() {
+		return Double.parseDouble(y);
+	}
+	
 	@Override public String toString() {
 		return "X : " + x + " Y : " + y; 
 		
 	}
 
+	/// getters and setters ///
+	
 	public String getX() {
 		return x;
 	}

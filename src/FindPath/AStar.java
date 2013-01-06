@@ -14,7 +14,7 @@ public class AStar implements FindBestPath {
 	
  
 	/**
-	 * 
+	 * Initialise l'algorithme AStar
 	 * @param reseau		le reseau 
 	 */
 	public AStar (Reseau reseau){

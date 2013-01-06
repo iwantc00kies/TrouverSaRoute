@@ -2,12 +2,14 @@ package main;
 
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.Observable;
+import java.util.Observer;
 
 import FindPath.AStar;
 import FindPath.FindBestPath;
 
 
-public class Reseau implements InterfaceReseau{
+public class Reseau extends Observable implements InterfaceReseau{
 
 	private LinkedList<Arret> mesArrets;
 	private LinkedList<Ligne> mesLignes;
@@ -15,12 +17,14 @@ public class Reseau implements InterfaceReseau{
 	
 	
 	///  getters and setters   ///
+	
 	public LinkedList<Ligne> getLignes() {
 		return mesLignes;
 	}
 
 	public void setLignes(Collection<Ligne> mesLignes) {
 		this.mesLignes = (LinkedList<Ligne>) mesLignes;
+		notifyObservers();		// le reseau a change, on notifie les vues
 	}
 
 	public LinkedList<Arret> getArrets() {
@@ -29,6 +33,7 @@ public class Reseau implements InterfaceReseau{
 
 	public void setArrets(Collection<Arret> mesArrets) {
 		this.mesArrets = (LinkedList<Arret>) mesArrets;
+		notifyObservers();		// le reseau a change, on notifie les vues
 	}
 
 	
@@ -38,7 +43,6 @@ public class Reseau implements InterfaceReseau{
 	 * @param cheminArretsCSV
 	 */
 	public Reseau(String cheminLignesCSV, String cheminArretsCSV) {
-
 		chargerCSV(cheminLignesCSV, cheminArretsCSV);
 		majArretsSuivants();
 		rechercheChemin= new AStar(this);
@@ -112,29 +116,10 @@ public class Reseau implements InterfaceReseau{
 				}
 			}
 		}
+		
+		notifyObservers();		// le reseau a change, on notifie les vues
 	}
-	
-//	/**
-//	 * Met a jour les arrets precedents de chaque arret
-//	 */
-//	public void majArretsPrecedents() {
-//		for (Ligne ligne : mesLignes) {
-//			LinkedList<Arret> arrets = ligne.getArrets();
-//			for (int i=0 ; i<arrets.size()-1 ; i++) {
-//				Arret arretToUpdate;
-//				try {
-//					arretToUpdate = arretHelper.getArretbyName(arrets.get(i).getNom(), this.mesArrets);
-//					arretToUpdate.addArretSuivant(arrets.get(i+1));
-//				} catch (Exception e) {
-//					System.out.println(arrets.get(i).getNom());
-//					for (Arret a : mesArrets) {
-//						System.out.println(a.getNom());
-//					}
-//					e.printStackTrace();
-//				}
-//			}
-//		}
-//	}
+
 	
 	
 	/**

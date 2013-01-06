@@ -10,10 +10,17 @@ public class Ligne {
 	private LinkedList <Arret> arrets;
 
 
+	/**
+	 * Construit une nouvelle ligne, qui contient une liste d'arrets
+	 */
 	Ligne(){
 		arrets = new LinkedList<Arret>();
 	}
-
+	
+	
+	/**
+	 * Affiche les caractéristiques de la ligne sur la sortie standard
+	 */
 	public void Afficher(){
 		System.out.println("Numero : " + numero + " \t\tNom : " + nom + " \t\t Type : " + type );
 		System.out.println("\t\t\tArrets:");
@@ -22,10 +29,12 @@ public class Ligne {
 		}
 	}
 
+	
+	///  getters and setters   ///
+	
 	public void ajoutArret(Arret arret){
 		arrets.add(arret);
 	}
-	
 	
 	public String getNumero() {
 		return numero;
@@ -48,7 +57,6 @@ public class Ligne {
 	}
 
 	public void setType(String type) {
-		//TODO? verifier types autorises (Bus)
 		this.type = type;
 	}
 
