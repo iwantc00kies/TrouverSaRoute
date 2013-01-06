@@ -1,7 +1,7 @@
 package test;
 
-import main.Controller;
 import main.Reseau;
+import Client.ClientController;
 import Client.InterfaceClient;
 
 
@@ -18,7 +18,7 @@ public class TestInterfaceClient {
 		InterfaceClient client =  new InterfaceClient(res);
 		
 		//controleur
-		Controller cont = new Controller(res, client);
+		ClientController cont = new ClientController(res, client);
 		
 		//ensuite test de modification du réseau (normalement depuis l'interface admin)
  

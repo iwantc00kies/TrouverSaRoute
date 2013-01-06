@@ -1,5 +1,6 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 
@@ -14,7 +15,7 @@ public class Arret {
 	protected boolean estAbrite;
 	protected String mobilier;
 	protected int codeCommune;
-
+	protected ArrayList<Arret> arretSuivants = new ArrayList<Arret>(1);
 
 	Arret(String nom) {
 		setNom(nom);
@@ -33,15 +34,19 @@ public class Arret {
 		}
 	}
 
-
+	/**
+	 * Affiche la description de l'arrêt
+	 */
 	public void Afficher(){
-		int i = 0;
 		System.out.println("Numero : " + numero + " \t\tNom : " + nom + "\t\t coordonnees : " + coord.toString());
 		System.out.println("Accessible : " + estAccessible + " \t\tAbrite : " + estAbrite + " \t\t Mobilier : " + mobilier + " \t\t codeCommune : " + codeCommune);	
 		System.out.println("\t\t\tLigne:");
 		for(String ligne : lignes){
-			i ++;
-			System.out.println("\t\t\t  " +"ligne : " + i + " " + ligne);
+			System.out.println("\t\t\t\t : "+ ligne);
+		}
+		System.out.println("\t\t\tArrets suivants:");
+		for(Arret a : arretSuivants){
+			System.out.println("\t\t\t\t : "+ a.getNom());
 		}
 	}
 
@@ -52,9 +57,9 @@ public class Arret {
 	public String getString() {
 		return (nom);
 	}
-	
+
 	/**
-	 * Calcule la distance entre deux arrets
+	 * Calcule la distance euclidienne entre deux arrets
 	 * @param a		le deuxieme arret
 	 * @return		la distance entre deux arrets
 	 */
@@ -65,6 +70,18 @@ public class Arret {
 		double yA = Double.valueOf(a.coord.y);	
 		return Math.sqrt( Math.pow(xA - xB, 2) + Math.pow(yA - yB, 2) );
 	}
+
+	
+	/**
+	 * Ajoute un arret à la liste des arrets suivants. Ceci est necessaire pour l'algorithme de recherche.
+	 * @param a 	l'arret suivant a ajouter 
+	 */
+	public void addArretSuivant(Arret a) {
+		this.arretSuivants.add(a);
+	}
+	
+	
+	
 	
 	public String getNom() {
 		return nom;

@@ -110,7 +110,9 @@ public class csv {
 				String[] champs = ligne[0].split(delims);				//lire les colonnes	
 				arretTmp = new Arret(champs[1]);
 				arretTmp.numero = Integer.valueOf(champs[0]);
-				arretTmp.lignes.add(champs[2]);
+				for (String l : champs[2].toString().split(" ")) {
+					arretTmp.lignes.add(l);
+				}
 				arretTmp.coord.x = champs[3];
 				arretTmp.coord.y = champs[4];
 				arretTmp.setEstAccessible(champs[5].trim().toLowerCase());
