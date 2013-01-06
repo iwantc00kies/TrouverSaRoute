@@ -2,12 +2,8 @@ package FindPath;
 
 import java.util.LinkedList;
 
-import org.junit.internal.runners.statements.Fail;
-
 import main.Arret;
-import main.InterfaceReseau;
 import main.Ligne;
-import main.Reseau;
 
 /** algorithme de Djikstra de recherche du plus court chemin */
 public class Djikstra implements FindBestPath {

@@ -1,13 +1,10 @@
 package FindPath;
 
-import java.util.Collection;
 import java.util.LinkedList;
 
 import main.Arret;
-import main.InterfaceReseau;
 import main.Ligne;
 import main.Reseau;
-import main.arretHelper;
 
 /** implements A-Star algorithm **/
 public class AStar implements FindBestPath {

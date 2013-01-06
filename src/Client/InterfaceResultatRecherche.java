@@ -14,6 +14,11 @@ public class InterfaceResultatRecherche extends JFrame {
 
 
 	/**
+	 * generated serialID
+	 */
+	private static final long serialVersionUID = -4640512640840220648L;
+
+	/**
 	 * Affiche une nouvelle fenetre avec les arrets contenus dans resultat
 	 * @param depart 		le nom de l'arret de depart
 	 * @param arrivee 		le nom de l'arret d'arrivee

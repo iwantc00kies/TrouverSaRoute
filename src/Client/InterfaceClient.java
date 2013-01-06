@@ -15,8 +15,13 @@ import javax.swing.JPanel;
 import main.Arret;
 import main.Reseau;
 
-// implements PropertyChangeListener 
+
 public class InterfaceClient extends JFrame {
+
+	/**
+	 * generated serialID
+	 */
+	private static final long serialVersionUID = -5998576006995849054L;
 
 	private Reseau reseauModel;
 
