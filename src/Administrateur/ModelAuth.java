@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.ListIterator;
 
 
-public class ModelAuth extends AbstractModelAuth {
+public class ModelAuth extends ModelAbstractAuth {
 
 	public ModelAuth() {
 		super();
@@ -14,11 +14,11 @@ public class ModelAuth extends AbstractModelAuth {
 	String retrievePasswordOf(String username) { 
 		
 		String realPassword = "";
-		Iterator<CompteAdmin> itr = mesComptes.iterator();
+		Iterator<EntityCompteAdmin> itr = mesComptes.iterator();
 		
 		while ( (realPassword.isEmpty()) && (itr.hasNext()) ) {
 			
-			CompteAdmin admin = itr.next();
+			EntityCompteAdmin admin = itr.next();
 			
 			if ( admin.getUsername().compareTo(username) == 0 ) {
 				realPassword = admin.getPassword();
@@ -28,7 +28,7 @@ public class ModelAuth extends AbstractModelAuth {
 	}
 
 	@Override
-	void addCompteAdmin(CompteAdmin compte) {
+	void addCompteAdmin(EntityCompteAdmin compte) {
 		this.mesComptes.add( compte );
 		
 	}
