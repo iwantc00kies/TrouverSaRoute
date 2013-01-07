@@ -14,6 +14,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Administrateur.ModelAbstract;
+
 import main.Arret;
 import main.Reseau;
 
@@ -61,12 +63,12 @@ public class InterfaceClient extends JFrame  implements Observer{
 
 	/**
 	 * Constructeur de le vue InterfaceClient
-	 * @param reseau		le modele dont on cette classe est la vue
+	 * @param modelRes		le modele dont on cette classe est la vue
 	 */
-	public InterfaceClient(Reseau reseau) {
+	public InterfaceClient(ModelAbstract modelRes) {
 		//reseau : le réseau dont on veut suivre les modifications
 		// patern observer/observable 
-		this.reseauModel = reseau;
+		this.reseauModel = (Reseau) modelRes;
 
 		initialiserFenetre();
 		chargerArrets(reseauModel.getArrets());
