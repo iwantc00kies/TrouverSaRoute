@@ -10,7 +10,6 @@ public abstract class CtrlAbstract {
 	}
 	
 	abstract boolean doTheyMatch(String username, String password);
-	
 	abstract boolean control();
 	
 }

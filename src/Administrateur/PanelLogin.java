@@ -21,15 +21,8 @@ public class PanelLogin extends AbstractPanel implements ActionListener {
 	private JPasswordField passwordField;
 
 
-	public PanelLogin(AbstractCardLayout ihmAuth, String menuPanel,
-			CtrlAbstract controlerClass) {
-		this.cardLayout 	= ihmAuth;
-		this.nextPanel 		= menuPanel;
-		this.controler 		= controlerClass;
-
-		initComposants();
-
-		ajoutListeners();
+	public PanelLogin(AbstractCardLayout ihm, CtrlAbstract controlerClass) {
+		super(ihm, controlerClass);
 	}
 
 	protected void initComposants() {
@@ -43,7 +36,6 @@ public class PanelLogin extends AbstractPanel implements ActionListener {
 
 		submit = new JButton("Submit");
 
-		// Insertion dans un panel de forme ad�quate - TODO s�rement autre m�thode
 		JPanel loginPanel = new JPanel(new GridLayout(3,1));
 		loginPanel.add(userLabel);
 		loginPanel.add(userText);
@@ -68,10 +60,9 @@ public class PanelLogin extends AbstractPanel implements ActionListener {
 		String username = userText.getText();
 		String password = passwordField.getText();
 
+		// Appel du controleur afin de vérifier 
 		if ( this.controler.doTheyMatch(username, password) ) {
-
-			this.cardLayout.changeToPanel(nextPanel);
-
+			this.cardLayout.changeToPanel(IhmAdmin.MENUPANEL);
 		}
 		else{
 			System.out.println("Enter an invalid username and password");

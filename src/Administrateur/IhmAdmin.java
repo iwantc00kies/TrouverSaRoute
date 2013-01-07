@@ -24,26 +24,19 @@ import javax.swing.SpringLayout;
 
 
 public class IhmAdmin extends AbstractCardLayout {
-	
-	JPanel cards; //a panel that uses CardLayout
-	
+
 	final static String LOGINPANEL = "Authentification pour administrateur";
 	final static String MENUPANEL = "Menu d'administration";
 
-	
-	// TODO : essayer de faire fonctionner avec un private controler ici!
-	
-	public IhmAdmin() {
-		
-	}
-	
+	public IhmAdmin() {}
+
 	public IhmAdmin(ModelAbstract mode, CtrlAbstract controler) {
 		this.createAndShowGUI(controler);
 	}
 
 	//public static void createAndShowGUI(CtrlAbstractAuth controler) {
 	public void createAndShowGUI(CtrlAbstract controler) {
-		
+
 		//Create and set up the window.
 		JFrame frame = new JFrame("CardLayoutDemo");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -55,26 +48,27 @@ public class IhmAdmin extends AbstractCardLayout {
 		//Display the window.
 		frame.pack();
 		frame.setVisible(true);
-		
+
 	}
 
 	public void changeToPanel(String panelName) {
 		CardLayout cl = (CardLayout)(cards.getLayout());
-	        cl.show(cards, panelName);
+		cl.show(cards, panelName);
 	}
 
 	@Override
 	public void addComponentToPane(Container pane, CtrlAbstract controler) {
 
 		//Create the "cards".
-		JPanel cardLogin = new PanelLogin(this, MENUPANEL, controler);
-		JPanel cardMenu = new PanelMenu();
+		JPanel cardLogin = new PanelLogin(this, controler);
+		JPanel cardMenu = new PanelMenu(this, controler);
 
 		//Create the panel that contains the "cards".
 		cards = new JPanel(new CardLayout());
-		cards.add(cardLogin, LOGINPANEL);
 		cards.add(cardMenu, MENUPANEL);
+		cards.add(cardLogin, LOGINPANEL);
+		
 
-	        pane.add(cards, BorderLayout.CENTER);
+		pane.add(cards, BorderLayout.CENTER);
 	}
 }

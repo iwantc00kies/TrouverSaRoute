@@ -13,10 +13,6 @@ public abstract class ModelAbstract {
 			
 	}
 	
-	public void addObserver(IhmAdmin connexion) {
-		// TODO Auto-generated method stub
-	}
-	
 	abstract String retrievePasswordOf(String username);
 	
 	abstract void addCompteAdmin(EntityCompteAdmin compte);
