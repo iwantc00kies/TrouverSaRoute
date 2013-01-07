@@ -22,6 +22,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
+import main.Reseau;
+
 
 public class IhmAdmin extends AbstractCardLayout {
 
@@ -29,7 +31,23 @@ public class IhmAdmin extends AbstractCardLayout {
 	final static String MENUPANEL = "Menu d'administration";
 	final static String MODIFRESEAUPANEL = "Modifier le réseau";
 
-	public IhmAdmin() {}
+	public IhmAdmin() {};
+	public IhmAdmin(Reseau res, ModelAbstract model, CtrlAbstract controler) {
+		this.res = res;
+		this.model = model;
+		this.controler = controler;
+		
+		//Create and set up the window.
+		JFrame frame = new JFrame("CardLayoutDemo");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		//Create and set up the content pane.
+		addComponentToPane(frame.getContentPane());
+
+		//Display the window.
+		frame.pack();
+		frame.setVisible(true);
+	}
 
 	public IhmAdmin(ModelAbstract mode, CtrlAbstract controler) {
 		this.createAndShowGUI(controler);
@@ -38,17 +56,7 @@ public class IhmAdmin extends AbstractCardLayout {
 	//public static void createAndShowGUI(CtrlAbstractAuth controler) {
 	public void createAndShowGUI(CtrlAbstract controler) {
 
-		//Create and set up the window.
-		JFrame frame = new JFrame("CardLayoutDemo");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		//Create and set up the content pane.
-		AbstractCardLayout demo = new IhmAdmin();
-		demo.addComponentToPane(frame.getContentPane(), controler);
-
-		//Display the window.
-		frame.pack();
-		frame.setVisible(true);
+		
 
 	}
 
@@ -58,12 +66,12 @@ public class IhmAdmin extends AbstractCardLayout {
 	}
 
 	@Override
-	public void addComponentToPane(Container pane, CtrlAbstract controler) {
+	public void addComponentToPane(Container pane) {
 
 		//Create the "cards".
 		JPanel cardLogin = new PanelLogin(this, controler);
-		JPanel cardMenu = new PanelMenu(this, controler);
-		JPanel cardModifReseau = new PanelModifierReseau(this, controler);
+		JPanel cardMenu = new PanelMenu(this, controler, res);
+		JPanel cardModifReseau = new PanelModifierReseau(this, controler, res);
 
 		//Create the panel that contains the "cards".
 		cards = new JPanel(new CardLayout());

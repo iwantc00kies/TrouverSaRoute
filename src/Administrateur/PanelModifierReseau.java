@@ -5,12 +5,16 @@ import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import main.Reseau;
+
 public class PanelModifierReseau extends AbstractPanel {
 
-	public PanelModifierReseau(AbstractCardLayout ihm,
-			CtrlAbstract controlerClass) {
-		super(ihm, controlerClass);
-		// TODO Auto-generated constructor stub
+	private Reseau model;
+	
+	public PanelModifierReseau(IhmAdmin ihmAdmin, CtrlAbstract controler,
+			Reseau res) {
+		super(ihmAdmin, controler);
+		this.model = res;
 	}
 
 	@Override
