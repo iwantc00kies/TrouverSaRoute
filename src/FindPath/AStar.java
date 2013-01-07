@@ -2,6 +2,8 @@ package FindPath;
 
 import java.util.LinkedList;
 
+import exception.NotImplementedException;
+
 import main.Arret;
 import main.Ligne;
 import main.Reseau;
@@ -28,7 +30,7 @@ public class AStar implements FindBestPath {
 	
 	@Override
 	public void findBestPath(Arret depart, Arret arrivee) {
-		 throw new UnsupportedOperationException("not implemented yet");	
+		 throw new NotImplementedException("Algorithme de recherche pas encore implemente");
 	}
  
 }
