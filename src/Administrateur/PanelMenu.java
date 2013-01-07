@@ -18,12 +18,12 @@ import main.csv;
 public class PanelMenu extends AbstractPanel implements ActionListener {
 
 	private JButton chargerArrets;
-	private JTextField urlArrets;
+	protected JTextField urlArrets;
 	private JButton chargerLignes;
-	private JTextField urlLignes;
+	protected JTextField urlLignes;
 	private JButton voirReseau;
-	private JButton modifierReseau;
-	private JButton deconnexion;
+	protected JButton chargerReseau;
+	protected JButton deconnexion;
 
 	private JFileChooser fcArrets;
 	private JFileChooser fcLignes;
@@ -44,19 +44,16 @@ public class PanelMenu extends AbstractPanel implements ActionListener {
 		// Le fileChooser associé
 		fcArrets = new JFileChooser();
 		// Le champs correspondant au chemin
-		urlArrets = new JTextField("Copier chemin du fichier csv");
-		
-		//chargerArrets = new JFileChooser();
+		urlArrets = new JTextField("Copier chemin ou cliquer Parcourir");
 		
 		// Pour le fichier de lignes
-		chargerLignes = new JButton("Parcourir");
+		chargerLignes = new JButton("Parcourir...");
 		chargerLignes.addActionListener(this);
 		fcLignes = new JFileChooser();
-		urlLignes = new JTextField("Copier chemin du fichier csv");
-		
+		urlLignes = new JTextField("Copier chemin ou cliquer Parcourir");
 		
 		//voirReseau = new JButton("Voir le réseau");
-		modifierReseau = new JButton("Charger le réseau");
+		chargerReseau = new JButton("Charger le réseau");
 		deconnexion = new JButton("Deconnection");
 
 		JPanel menuAdmin = new JPanel(new GridLayout(5,2));
@@ -64,7 +61,7 @@ public class PanelMenu extends AbstractPanel implements ActionListener {
 		menuAdmin.add(urlArrets);
 		menuAdmin.add(chargerLignes);
 		menuAdmin.add(urlLignes);
-		menuAdmin.add(modifierReseau);
+		menuAdmin.add(chargerReseau);
 		menuAdmin.add(deconnexion);
 
 		this.add(menuAdmin);
@@ -93,80 +90,10 @@ public class PanelMenu extends AbstractPanel implements ActionListener {
 			}
 		}
 	}
-	
-	/* Dans le controleur
-	@Override
-	protected void ajoutListeners() {
-
-		this.chargerArrets.addActionListener( new ActionListener() {	
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("Arrets en chargement...");
-				model.setArrets(csv.csvCreerArrets(urlArrets.getText()));
-				isArretsCharges = true;
-				System.out.println("Terminé");
-			}
-
-		});
-
-		this.chargerLignes.addActionListener( new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("Lignes en chargement...");
-				model.setLignes(csv.csvCreerLignes(urlLignes.getText()));
-				isLignesChargees = true;
-				System.out.println("Terminé");
-			}
-		});
-
-		this.voirReseau.addActionListener( new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (isArretsCharges && isLignesChargees) {
-
-					JFrame afficherReseau = new JFrame();
-
-				}
-
-			}
-
-		});
-
-		this.modifierReseau.addActionListener( new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				cardLayout.changeToPanel(IhmAdmin.MODIFRESEAUPANEL);
-			}
-
-		});
-	}
-	 */
 
 	@Override
 	public void actionListeners(ActionListener actionListener) {
 		this.deconnexion.addActionListener(actionListener);
-		this.urlArrets.addActionListener(actionListener);
-		this.urlLignes.addActionListener(actionListener);
+		this.chargerReseau.addActionListener(actionListener);
 	}
-/*
-	public void deconnexionListener(ActionListener actionListener) {
-		this.deconnexion.addActionListener(actionListener);
-	}
-
-	public void chargerArretsListener(ActionListener actionListener) {
-		//this.deconnexion.addActionListener(actionListener);
-	}
-
-	public void chargerLignesListener(ActionListener actionListener) {
-		//this.deconnexion.addActionListener(actionListener);
-
-	}
-
-	public void voirReseauListener(ActionListener actionListener) {
-		// this.deconnexion.addActionListener(actionListener);
-
-	}
-	*/
 }
