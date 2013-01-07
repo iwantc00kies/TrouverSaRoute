@@ -2,14 +2,15 @@ package main;
 
 import java.util.Collection;
 import java.util.LinkedList;
-import java.util.Observable;
-import java.util.Observer;
-
 import Administrateur.ModelAbstract;
 import FindPath.AStar;
 import FindPath.FindBestPath;
 
 
+/**
+ * Le reseau, l'entite modele de notre application
+ *
+ */
 public class Reseau extends ModelAbstract implements InterfaceReseau{
 
 	private LinkedList<Arret> mesArrets;
@@ -25,6 +26,8 @@ public class Reseau extends ModelAbstract implements InterfaceReseau{
 
 	public void setLignes(Collection<Ligne> mesLignes) {
 		this.mesLignes = (LinkedList<Ligne>) mesLignes;
+		setChanged();
+		notifyObservers();		// le reseau a change, on notifie les vues
 	}
 
 	public LinkedList<Arret> getArrets() {
@@ -40,20 +43,23 @@ public class Reseau extends ModelAbstract implements InterfaceReseau{
 
 	/**
 	 * Construct a new network
-	 * @param cheminLignesCSV
-	 * @param cheminArretsCSV
+	 * @param cheminLignesCSV		le chemin vers le fichier CSV de lignes a charger
+	 * @param cheminArretsCSV		le chemin vers le fichier CSV d'arrets a charger
 	 */
 	public Reseau(String cheminLignesCSV, String cheminArretsCSV) {
 		chargerCSV(cheminLignesCSV, cheminArretsCSV);
 		majArretsSuivants();
 		rechercheChemin= new AStar(this);
 	}
-
-
+	
+	/**
+	 * Construct a new network
+	 */
 	public Reseau() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
-
+	
+	
 	/**
 	 * Recherche un chemin entre deux Arrets
 	 * @param depart		le nom de l'arret de depart
@@ -79,7 +85,10 @@ public class Reseau extends ModelAbstract implements InterfaceReseau{
 
 
 
-	/** retourne un chemin arbitraire de test entre Aeroport et Troquary **/
+	/**
+	 * retourne un chemin arbitraire de test entre Aeroport et Troquary
+	 * @return  		le chemin en question
+	 */
 	public LinkedList<Arret> testRechercheMeilleurChemin() {
 		LinkedList<Arret> meilleurChemin = new LinkedList<Arret>();
 		meilleurChemin.add(mesArrets.get(0));
@@ -87,7 +96,6 @@ public class Reseau extends ModelAbstract implements InterfaceReseau{
 		meilleurChemin.add(mesArrets.get(11));	
 		meilleurChemin.add(mesArrets.get(12));
 		return meilleurChemin;
-		// il faudrait les changements aussi...
 	}
 
 
@@ -121,7 +129,7 @@ public class Reseau extends ModelAbstract implements InterfaceReseau{
 				}
 			}
 		}
-
+		setChanged();
 		notifyObservers();		// le reseau a change, on notifie les vues
 	}
 

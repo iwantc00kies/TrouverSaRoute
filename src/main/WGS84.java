@@ -1,6 +1,9 @@
 package main;
 
-
+/**
+ * Classe permettant de gérer les coordonnées GPS au format WGS84
+ *
+ */
 public class WGS84 {
 
 	protected String x;
