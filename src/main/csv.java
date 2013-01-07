@@ -126,8 +126,8 @@ public class csv {
 				for (String l : champs[2].toString().split(" ")) {
 					arretTmp.lignes.add(l);
 				}
-				arretTmp.coord.x = champs[3];
-				arretTmp.coord.y = champs[4];
+				arretTmp.coord.setX(champs[3]);
+				arretTmp.coord.setY(champs[4]);
 				arretTmp.setEstAccessible(champs[5].trim().toLowerCase());
 				arretTmp.mobilier = champs[6];
 				arretTmp.codeCommune = Integer.valueOf(champs[champs.length-1]);

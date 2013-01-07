@@ -71,10 +71,10 @@ public class Arret {
 	 * @return		la distance entre deux arrets
 	 */
 	public double distance(Arret a) {
-		double xB = Double.valueOf(this.coord.x);
-		double yB = Double.valueOf(this.coord.y);
-		double xA = Double.valueOf(a.coord.x);
-		double yA = Double.valueOf(a.coord.y);	
+		double xB = Double.valueOf(this.coord.getX());
+		double yB = Double.valueOf(this.coord.getY());
+		double xA = Double.valueOf(a.coord.getX());
+		double yA = Double.valueOf(a.coord.getY());	
 		return Math.sqrt( Math.pow(xA - xB, 2) + Math.pow(yA - yB, 2) );
 	}
 
