@@ -44,6 +44,9 @@ public class main {
 
 				//controleur
 				ClientController cont = new ClientController(res, client);
+				
+				//pattern observer/observable
+				res.addObserver(client);
 			}
 		});
 
