@@ -9,9 +9,9 @@ import FindPath.FindBestPath;
 
 /**
  * Le reseau, l'entite modele de notre application
- *
+ * herite de ModelAbstract, qui herite de Observable
  */
-public class Reseau extends ModelAbstract implements InterfaceReseau{
+public class Reseau extends ModelAbstract implements InterfaceReseau {
 
 	private LinkedList<Arret> mesArrets;
 	private LinkedList<Ligne> mesLignes;
@@ -109,6 +109,8 @@ public class Reseau extends ModelAbstract implements InterfaceReseau{
 		setArrets(csv.csvCreerArrets(cheminArretsCSV));
 	}
 
+	
+	
 	/**
 	 * Met a jour les arrets suivants de chaque arret
 	 */

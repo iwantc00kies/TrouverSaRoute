@@ -6,12 +6,33 @@ package main;
  */
 public class WGS84 {
 
-	protected String x;
-	protected String y;
+	
+	/** utilisation d'un objet Pair permettant de stocker des objets arbitraires a l'aide de la genericite **/
+	protected Pair<String, String> p;
+	//protected String x;
+	//protected String y;
 	
 	WGS84(){
+		p = new Pair<String, String>(new String(), new String());
 	}
 
+	public String getX() {
+		return p.getX();
+	}
+
+	public void setX(String x) {
+		this.p.setX(x);
+	}
+
+	public String getY() {
+		return p.getY();
+	}
+
+	public void setY(String y) {
+		this.p.setY(y);
+	}
+	
+	/*
 	public double getDoubleX() {
 		return Double.parseDouble(x);
 	}
@@ -42,7 +63,7 @@ public class WGS84 {
 	public void setY(String y) {
 		this.y = y;
 	}
- 
+ */
 
 	
 }
