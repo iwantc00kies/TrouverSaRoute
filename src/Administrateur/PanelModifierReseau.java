@@ -1,6 +1,7 @@
 package Administrateur;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -8,13 +9,9 @@ import javax.swing.JTextField;
 import main.Reseau;
 
 public class PanelModifierReseau extends AbstractPanel {
-
-	private Reseau model;
 	
-	public PanelModifierReseau(IhmAdmin ihmAdmin, CtrlAbstract controler,
-			Reseau res) {
-		super(ihmAdmin, controler);
-		this.model = res;
+	public PanelModifierReseau(AbstractCardLayout ihm, ModelAbstract modelRes) {
+		super(ihm, modelRes);
 	}
 
 	@Override
@@ -25,9 +22,10 @@ public class PanelModifierReseau extends AbstractPanel {
 	}
 
 	@Override
-	protected void ajoutListeners() {
+	public void ajoutListeners(ActionListener al) {
 		// TODO Auto-generated method stub
 		
 	}
+	
 
 }

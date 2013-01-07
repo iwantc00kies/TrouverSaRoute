@@ -5,19 +5,20 @@ import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
 
+import Administrateur.ModelAbstract;
 import FindPath.AStar;
 import FindPath.FindBestPath;
 
 
-public class Reseau extends Observable implements InterfaceReseau{
+public class Reseau extends ModelAbstract implements InterfaceReseau{
 
 	private LinkedList<Arret> mesArrets;
 	private LinkedList<Ligne> mesLignes;
 	private FindBestPath rechercheChemin;
-	
-	
+
+
 	///  getters and setters   ///
-	
+
 	public LinkedList<Ligne> getLignes() {
 		return mesLignes;
 	}
@@ -36,7 +37,7 @@ public class Reseau extends Observable implements InterfaceReseau{
 		notifyObservers();		// le reseau a change, on notifie les vues
 	}
 
-	
+
 	/**
 	 * Construct a new network
 	 * @param cheminLignesCSV
@@ -47,7 +48,11 @@ public class Reseau extends Observable implements InterfaceReseau{
 		majArretsSuivants();
 		rechercheChemin= new AStar(this);
 	}
-	
+
+
+	public Reseau() {
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * Recherche un chemin entre deux Arrets
@@ -63,7 +68,7 @@ public class Reseau extends Observable implements InterfaceReseau{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		if(ArretDepart == null || ArretArrivee == null){
 			System.out.println("Arrets introuvables");
 		}
@@ -71,7 +76,7 @@ public class Reseau extends Observable implements InterfaceReseau{
 			rechercheChemin.findBestPath(ArretDepart, ArretArrivee);
 		}
 	}
-	
+
 
 
 	/** retourne un chemin arbitraire de test entre Aeroport et Troquary **/
@@ -116,12 +121,12 @@ public class Reseau extends Observable implements InterfaceReseau{
 				}
 			}
 		}
-		
+
 		notifyObservers();		// le reseau a change, on notifie les vues
 	}
 
-	
-	
+
+
 	/**
 	 * Met a jour les arrets precedents de chaque arret
 	 */
@@ -150,7 +155,7 @@ public class Reseau extends Observable implements InterfaceReseau{
 			}
 		}
 	}
- 
-	
+
+
 
 }

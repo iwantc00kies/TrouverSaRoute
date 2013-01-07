@@ -14,28 +14,41 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class PanelLogin extends AbstractPanel  implements ActionListener { 
+public class PanelLogin extends AbstractPanel { 
 
+	// Éléments que l'on va manipuler en dehors de la classe (notamment le contrôleur)
 	private JButton submit;
 	private JTextField userText;
 	private JPasswordField passwordField;
 
+	public PanelLogin(AbstractCardLayout ihm, ModelAbstract modelAuth) {
+		super(ihm, modelAuth);
+	}
+	
+	public JButton getSubmit() {
+		return submit;
+	}
 
-	public PanelLogin(AbstractCardLayout ihm, CtrlAbstract controlerClass) {
-		super(ihm, controlerClass);
+	public JTextField getUserText() {
+		return userText;
+	}
+
+	public JPasswordField getPasswordField() {
+		return passwordField;
 	}
 
 	protected void initComposants() {
 
-		// El�ments de la page
+		// Eléments de la page
 		JLabel userLabel = new JLabel("Username:");
 		userText = new JTextField(15);
-
+		
 		JLabel passwordLabel = new JLabel("Password:");
 		passwordField = new JPasswordField(15);
 
 		submit = new JButton("Submit");
 
+		// Ajout des éléments dans un panel arrangé
 		JPanel loginPanel = new JPanel(new GridLayout(3,1));
 		loginPanel.add(userLabel);
 		loginPanel.add(userText);
@@ -43,17 +56,24 @@ public class PanelLogin extends AbstractPanel  implements ActionListener {
 		loginPanel.add(passwordField);
 		loginPanel.add(submit);
 
-		// L'ajouter dans notre panel actuel
+		// Ajout du panel dans la class
 		this.add(loginPanel, BorderLayout.CENTER);
 	}
-
+	
+	public void ajoutListeners(ActionListener al) {
+		this.submit.addActionListener(al);
+	}
+	
+	
+/* !!!!!! dans le controleur
+ * 
 	protected void ajoutListeners() {
 
 		// Ajout des �couteurs
 		this.submit.addActionListener(this);
 
 	}
-
+ 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
@@ -69,5 +89,5 @@ public class PanelLogin extends AbstractPanel  implements ActionListener {
 			JOptionPane.showMessageDialog(submit, "Incorrect login or password", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-
+*/
 }

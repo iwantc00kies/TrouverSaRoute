@@ -7,6 +7,8 @@ import java.util.ListIterator;
 
 public class ModelAuth extends ModelAbstract {
 
+	protected ArrayList<EntityCompteAdmin> mesComptes = new ArrayList<EntityCompteAdmin>();
+	
 	public ModelAuth() {
 		super();
 	}
@@ -27,7 +29,6 @@ public class ModelAuth extends ModelAbstract {
 		return realPassword;
 	}
 
-	@Override
 	void addCompteAdmin(EntityCompteAdmin compte) {
 		this.mesComptes.add( compte );
 		

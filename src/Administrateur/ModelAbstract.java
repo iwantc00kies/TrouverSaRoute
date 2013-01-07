@@ -1,20 +1,12 @@
 package Administrateur;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
-public abstract class ModelAbstract {
+public abstract class ModelAbstract extends Observable {
 	
-	protected ArrayList<EntityCompteAdmin> mesComptes = new ArrayList<EntityCompteAdmin>();
-	
-	public ModelAbstract() {
-		
-			// Init des comptes
-			this.addCompteAdmin( new EntityCompteAdmin("admin", "password" ) );
-			
+	public ModelAbstract() {		
 	}
 	
-	abstract String retrievePasswordOf(String username);
-	
-	abstract void addCompteAdmin(EntityCompteAdmin compte);
 
 }

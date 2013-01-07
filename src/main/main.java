@@ -21,13 +21,14 @@ public class main {
 			public void run() {
 				
 				// Instanciation de notre modèle
-				ModelAbstract model = new ModelAuth();
+				ModelAbstract modelAuth = new ModelAuth();
+				ModelAbstract modelRes 	= new Reseau();
+
+				// Création de l'IHM correspondant avec les différents modèles nécessaires
+				AbstractCardLayout ihmAdmin = new IhmAdmin(modelAuth, modelRes);
 
 				// Création du contrôleur
-				CtrlAbstract controler = new CtrlAuth(model);
-
-				// Création de l'IHM correspondant
-				AbstractCardLayout pageAdmin = new IhmAdmin(model, controler);
+				CtrlAbstract controler = new CtrlAuth(modelAuth, modelRes, ihmAdmin);
 			}
 		});
 		
@@ -40,6 +41,7 @@ public class main {
 				// modele 
 				Reseau res = new Reseau("./files/lignes.csv", "./files/stations.csv");
 
+				/*
 				//vue 
 				InterfaceClient client =  new InterfaceClient(res);
 
@@ -47,7 +49,7 @@ public class main {
 				ClientController cont = new ClientController(res, client);
 				
 				//pattern observer/observable
-				res.addObserver(client);
+				res.addObserver(client);*/
 			}
 		});
 

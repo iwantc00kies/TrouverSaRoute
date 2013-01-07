@@ -10,9 +10,9 @@ import main.Reseau;
 public abstract class AbstractCardLayout {
 	
 	protected JPanel cards; //a panel that uses CardLayout
-	protected Reseau res;
-	protected ModelAbstract model;
-	protected CtrlAbstract controler;
+	protected JPanel cardLogin;
+	protected JPanel cardMenu;
+	protected JPanel cardModifReseau;
 	
 	public AbstractCardLayout() {};
 	

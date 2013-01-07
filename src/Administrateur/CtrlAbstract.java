@@ -3,13 +3,14 @@ package Administrateur;
 
 public abstract class CtrlAbstract {
 
-	protected ModelAbstract model;
+	protected ModelAbstract modelAuth;
+	protected ModelAbstract modelRes;
+	protected AbstractCardLayout ihmAdmin;
 	
-	public CtrlAbstract(ModelAbstract model) {
-		this.model = model;
+	public CtrlAbstract(ModelAbstract modelAuth, ModelAbstract modelRes, AbstractCardLayout ihmAdmin) {
+		this.modelAuth = modelAuth;
+		this.modelRes = modelRes;
+		this.ihmAdmin = ihmAdmin;
 	}
-	
-	abstract boolean doTheyMatch(String username, String password);
-	abstract boolean control();
 	
 }

@@ -14,8 +14,6 @@ import main.Reseau;
 import main.csv;
 
 public class PanelMenu extends AbstractPanel {
-
-	private Reseau model;
 	
 	private JButton chargerArrets;
 	private JTextField urlArrets;
@@ -27,9 +25,8 @@ public class PanelMenu extends AbstractPanel {
 	private boolean isArretsCharges = false;
 	private boolean isLignesChargees = false;
 
-	public PanelMenu(IhmAdmin ihmAdmin, CtrlAbstract controler, Reseau res) {
-		super(ihmAdmin, controler);
-		this.model = res;
+	public PanelMenu(AbstractCardLayout ihm, ModelAbstract modelRes) {
+		super(ihm, modelRes);
 	}
 
 	@Override
@@ -52,10 +49,8 @@ public class PanelMenu extends AbstractPanel {
 		menuAdmin.add(modifierReseau);
 		
 		this.add(menuAdmin);
-
 	}
-
-
+/* Dans le controleur
 	@Override
 	protected void ajoutListeners() {
 		
@@ -102,5 +97,12 @@ public class PanelMenu extends AbstractPanel {
 			}
 			
 		});
+	}
+	*/
+
+	@Override
+	public void ajoutListeners(ActionListener al) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -8,18 +8,18 @@ import javax.swing.JPanel;
 public abstract class AbstractPanel extends JPanel  {
 	
 	protected AbstractCardLayout cardLayout;
-	protected CtrlAbstract controler; 
+	protected ModelAbstract model; 
 	
-	public AbstractPanel(AbstractCardLayout ihm, CtrlAbstract controlerClass) {
+	public AbstractPanel(AbstractCardLayout ihm, ModelAbstract model) {
 		this.cardLayout 	= ihm;
-		this.controler 		= controlerClass;
+		this.model			= model;
 
 		initComposants();
-		ajoutListeners();
+	
 	}
 	
 	protected abstract void initComposants();
-	protected abstract void ajoutListeners();
-
+	
+	public abstract void ajoutListeners(ActionListener al);
 	
 }

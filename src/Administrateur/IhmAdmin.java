@@ -24,43 +24,38 @@ import javax.swing.SpringLayout;
 
 import main.Reseau;
 
-
 public class IhmAdmin extends AbstractCardLayout {
-
+	
+	// Modèles nécessaires à cette interface
+	protected ModelAbstract modelRes;
+	protected ModelAbstract modelAuth;
+	
+	// Constantes nécessaire pour le changement de panels
 	final static String LOGINPANEL = "Authentification pour administrateur";
 	final static String MENUPANEL = "Menu d'administration";
 	final static String MODIFRESEAUPANEL = "Modifier le réseau";
 
-	public IhmAdmin() {};
-	public IhmAdmin(Reseau res, ModelAbstract model, CtrlAbstract controler) {
-		this.res = res;
-		this.model = model;
-		this.controler = controler;
+	public IhmAdmin(ModelAbstract modelAuth, ModelAbstract modelRes) {
 		
-		//Create and set up the window.
-		JFrame frame = new JFrame("CardLayoutDemo");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// On renseigne les différents modèles nécessaires
+		this.modelAuth 	= modelAuth;
+		this.modelRes	= modelRes;
+		
+		// Création de la fenêtre qui permettra de changer de panels
+		JFrame frame = new JFrame("Administration");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // TODO : erreur lorsque l'on a deux fenêtres
 
-		//Create and set up the content pane.
+		// Ajout de nos différents panels
 		addComponentToPane(frame.getContentPane());
 
-		//Display the window.
+		// Affichage de la fenêtre
 		frame.pack();
 		frame.setVisible(true);
 	}
 
-	public IhmAdmin(ModelAbstract mode, CtrlAbstract controler) {
-		this.createAndShowGUI(controler);
-	}
-
-	//public static void createAndShowGUI(CtrlAbstractAuth controler) {
-	public void createAndShowGUI(CtrlAbstract controler) {
-
-		
-
-	}
-
 	public void changeToPanel(String panelName) {
+
+		// Pour changer de panels
 		CardLayout cl = (CardLayout)(cards.getLayout());
 		cl.show(cards, panelName);
 	}
@@ -68,18 +63,20 @@ public class IhmAdmin extends AbstractCardLayout {
 	@Override
 	public void addComponentToPane(Container pane) {
 
-		//Create the "cards".
-		JPanel cardLogin = new PanelLogin(this, controler);
-		JPanel cardMenu = new PanelMenu(this, controler, res);
-		JPanel cardModifReseau = new PanelModifierReseau(this, controler, res);
+		// Créations des panels
+		cardLogin = new PanelLogin(this, modelAuth);
+		cardMenu = new PanelMenu(this, modelRes);
+		cardModifReseau = new PanelModifierReseau(this, modelRes);
 
-		//Create the panel that contains the "cards".
+		// Instanciation du cardLayout pour le changements de panels
 		cards = new JPanel(new CardLayout());
-		cards.add(cardMenu, MENUPANEL);
+		
+		// Ajouts des panels avec leur nom : leur identifiant
 		cards.add(cardLogin, LOGINPANEL);
+		cards.add(cardMenu, MENUPANEL);
 		cards.add(cardModifReseau, MODIFRESEAUPANEL);
 		
-
+		// Ajout de notre cardlayout dans le panel actuel
 		pane.add(cards, BorderLayout.CENTER);
 	}
 }
