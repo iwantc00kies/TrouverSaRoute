@@ -4,8 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -13,8 +15,8 @@ import javax.swing.JTextField;
 import main.Reseau;
 import main.csv;
 
-public class PanelMenu extends AbstractPanel {
-	
+public class PanelMenu extends AbstractPanel implements ActionListener {
+
 	private JButton chargerArrets;
 	private JTextField urlArrets;
 	private JButton chargerLignes;
@@ -23,8 +25,8 @@ public class PanelMenu extends AbstractPanel {
 	private JButton modifierReseau;
 	private JButton deconnexion;
 
-	private boolean isArretsCharges = false;
-	private boolean isLignesChargees = false;
+	private JFileChooser fcArrets;
+	private JFileChooser fcLignes;
 
 	public PanelMenu(AbstractCardLayout ihm, ModelAbstract modelRes) {
 		super(ihm, modelRes);
@@ -34,29 +36,68 @@ public class PanelMenu extends AbstractPanel {
 	protected void initComposants() {
 
 		// Éléments de la page
-		chargerArrets = new JButton("Charger CSV arrets");
+		
+		// Pour le fichier des arrêts, le bouton pour déclencher le parcours
+		chargerArrets = new JButton("Parcourir...");
+		// L'action associé
+		chargerArrets.addActionListener(this);
+		// Le fileChooser associé
+		fcArrets = new JFileChooser();
+		// Le champs correspondant au chemin
 		urlArrets = new JTextField("Copier chemin du fichier csv");
-		chargerLignes = new JButton("Charger CSV lignes");
+		
+		//chargerArrets = new JFileChooser();
+		
+		// Pour le fichier de lignes
+		chargerLignes = new JButton("Parcourir");
+		chargerLignes.addActionListener(this);
+		fcLignes = new JFileChooser();
 		urlLignes = new JTextField("Copier chemin du fichier csv");
-		voirReseau = new JButton("Voir le réseau");
-		modifierReseau = new JButton("Modifier le réseau");
+		
+		
+		//voirReseau = new JButton("Voir le réseau");
+		modifierReseau = new JButton("Charger le réseau");
 		deconnexion = new JButton("Deconnection");
 
-		JPanel menuAdmin = new JPanel(new GridLayout(3,2));
+		JPanel menuAdmin = new JPanel(new GridLayout(5,2));
 		menuAdmin.add(chargerArrets);
 		menuAdmin.add(urlArrets);
 		menuAdmin.add(chargerLignes);
 		menuAdmin.add(urlLignes);
 		menuAdmin.add(modifierReseau);
-		menuAdmin.add(modifierReseau);
 		menuAdmin.add(deconnexion);
-		
+
 		this.add(menuAdmin);
 	}
-/* Dans le controleur
+
+	public void actionPerformed(ActionEvent e) {
+
+		// On teste pour voir s'il s'agit des arrêts
+		if (e.getSource() == chargerArrets) {
+			int returnVal = fcArrets.showOpenDialog(PanelMenu.this);
+			if (returnVal == JFileChooser.APPROVE_OPTION) {
+				File file = fcArrets.getSelectedFile();
+				urlArrets.setText(file.getAbsolutePath());
+			} else {
+				System.out.println("Parcours de fichier annulé.");
+			}
+		}
+		// Il ne peut s'agir que des lignes
+		else {
+			int returnVal = fcLignes.showOpenDialog(PanelMenu.this);
+			if (returnVal == JFileChooser.APPROVE_OPTION) {
+				File file = fcLignes.getSelectedFile();
+				urlLignes.setText(file.getAbsolutePath());
+			} else {
+				System.out.println("Parcours de fichier annulé.");
+			}
+		}
+	}
+	
+	/* Dans le controleur
 	@Override
 	protected void ajoutListeners() {
-		
+
 		this.chargerArrets.addActionListener( new ActionListener() {	
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -65,9 +106,9 @@ public class PanelMenu extends AbstractPanel {
 				isArretsCharges = true;
 				System.out.println("Terminé");
 			}
-			
+
 		});
-		
+
 		this.chargerLignes.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -77,37 +118,39 @@ public class PanelMenu extends AbstractPanel {
 				System.out.println("Terminé");
 			}
 		});
-		
+
 		this.voirReseau.addActionListener( new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (isArretsCharges && isLignesChargees) {
-					
+
 					JFrame afficherReseau = new JFrame();
-					
+
 				}
-				
+
 			}
-			
+
 		});
-		
+
 		this.modifierReseau.addActionListener( new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				cardLayout.changeToPanel(IhmAdmin.MODIFRESEAUPANEL);
 			}
-			
+
 		});
 	}
-	*/
+	 */
 
 	@Override
-	public void mainListener(ActionListener actionListener) {
+	public void actionListeners(ActionListener actionListener) {
 		this.deconnexion.addActionListener(actionListener);
+		this.urlArrets.addActionListener(actionListener);
+		this.urlLignes.addActionListener(actionListener);
 	}
-	
+/*
 	public void deconnexionListener(ActionListener actionListener) {
 		this.deconnexion.addActionListener(actionListener);
 	}
@@ -118,11 +161,12 @@ public class PanelMenu extends AbstractPanel {
 
 	public void chargerLignesListener(ActionListener actionListener) {
 		//this.deconnexion.addActionListener(actionListener);
-		
+
 	}
 
 	public void voirReseauListener(ActionListener actionListener) {
 		// this.deconnexion.addActionListener(actionListener);
-		
+
 	}
+	*/
 }
