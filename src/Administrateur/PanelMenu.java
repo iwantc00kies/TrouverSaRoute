@@ -9,6 +9,7 @@ import java.io.File;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -21,7 +22,7 @@ public class PanelMenu extends AbstractPanel implements ActionListener {
 	protected JTextField urlArrets;
 	private JButton chargerLignes;
 	protected JTextField urlLignes;
-	private JButton voirReseau;
+	protected JButton voirReseau;
 	protected JButton chargerReseau;
 	protected JButton deconnexion;
 
@@ -44,26 +45,31 @@ public class PanelMenu extends AbstractPanel implements ActionListener {
 		// Le fileChooser associé
 		fcArrets = new JFileChooser();
 		// Le champs correspondant au chemin
-		urlArrets = new JTextField("Copier chemin ou cliquer Parcourir");
+		urlArrets = new JTextField("ou copier chemin");
 		
 		// Pour le fichier de lignes
 		chargerLignes = new JButton("Parcourir...");
 		chargerLignes.addActionListener(this);
 		fcLignes = new JFileChooser();
-		urlLignes = new JTextField("Copier chemin ou cliquer Parcourir");
+		urlLignes = new JTextField("ou copier chemin");
 		
-		//voirReseau = new JButton("Voir le réseau");
+		voirReseau = new JButton("Voir le réseau");
 		chargerReseau = new JButton("Charger le réseau");
-		deconnexion = new JButton("Deconnection");
+		deconnexion = new JButton("Déconnection");
 
-		JPanel menuAdmin = new JPanel(new GridLayout(5,2));
+		// Chargement des éléments dans un panel personnalisé
+		JPanel menuAdmin = new JPanel(new GridLayout(3,1));
+		menuAdmin.add(new JLabel("Arrêts :"));
 		menuAdmin.add(chargerArrets);
 		menuAdmin.add(urlArrets);
+		menuAdmin.add(new JLabel("Lignes :"));
 		menuAdmin.add(chargerLignes);
 		menuAdmin.add(urlLignes);
 		menuAdmin.add(chargerReseau);
+		menuAdmin.add(voirReseau);
 		menuAdmin.add(deconnexion);
 
+		// Chargement de ce panel dans notre class
 		this.add(menuAdmin);
 	}
 
@@ -95,5 +101,6 @@ public class PanelMenu extends AbstractPanel implements ActionListener {
 	public void actionListeners(ActionListener actionListener) {
 		this.deconnexion.addActionListener(actionListener);
 		this.chargerReseau.addActionListener(actionListener);
+		this.voirReseau.addActionListener(actionListener);
 	}
 }

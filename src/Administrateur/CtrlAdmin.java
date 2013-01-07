@@ -1,15 +1,22 @@
 package Administrateur;
 
+import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import main.csv;
+import javax.swing.BoxLayout;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 import main.*;
 
 
 public class CtrlAdmin extends CtrlAbstract {
 
 	protected CtrlAbstract ctrlAuth;
+	protected boolean reseauCharge = false; 
 
 	public CtrlAdmin (ModelAbstract modelRes, final AbstractCardLayout ihmAdmin, CtrlAbstract ctrlAuth) {
 		super(modelRes, ihmAdmin);
@@ -26,48 +33,11 @@ public class CtrlAdmin extends CtrlAbstract {
 				else if (e.getSource() == ((PanelMenu)ihmAdmin.cardMenu).chargerReseau ) {
 					controlChargerReseau();
 				}
-				//control();			
+				else if (e.getSource() == ((PanelMenu)ihmAdmin.cardMenu).voirReseau) {
+					controlVoirReseau();
+				}
 			}
 		});
-		/*
-		((PanelMenu) ihmAdmin.cardMenu).deconnexionListener( new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				controlDeco();
-			}
-
-		});
-
-		((PanelMenu) ihmAdmin.cardMenu).chargerArretsListener(  new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-		});
-
-		((PanelMenu) ihmAdmin.cardMenu).chargerLignesListener(  new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-		});
-
-		((PanelMenu) ihmAdmin.cardMenu).voirReseauListener (  new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-			}
-
-		});
-		 */
 
 	}
 
@@ -81,8 +51,38 @@ public class CtrlAdmin extends CtrlAbstract {
 				csv.csvCreerLignes(
 						( (PanelMenu)ihmAdmin.cardMenu).urlLignes.getText() ) 
 				);
-		
-		
+
+		reseauCharge = true;
+	}
+
+	protected void controlVoirReseau() {
+
+		// On ne peut afficher le réseau que s'il a été chargé
+		if (reseauCharge) {
+			JFrame frame = new JFrame("Vue du réseau");
+			frame.setTitle("Resultats de la recherche");
+
+			Container container = frame.getContentPane();
+			container.setLayout(new BoxLayout(container, BoxLayout.PAGE_AXIS));
+			
+			container.add(new JLabel("--- Lignes :"));
+			for(Ligne l : ((Reseau)model).getLignes()){
+				container.add(new JLabel("- "+l.getNom()));
+			}
+			container.add(new JLabel("--- Arrets :"));
+			for(Arret a : ((Reseau)model).getArrets()){
+				container.add(new JLabel("- "+a.getNom()));
+			}
+
+
+			frame.pack();
+			frame.setVisible(true);
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "Reseau non chargé", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+
+
 	}
 
 	@Override
