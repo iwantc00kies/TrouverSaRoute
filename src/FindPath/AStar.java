@@ -7,7 +7,7 @@ import main.Ligne;
 import main.Reseau;
 
 /** implements A-Star algorithm **/
-public class AStar<Node, Arc> implements FindBestPath {
+public class AStar implements FindBestPath {
 	
 	private Reseau monReseau;
 	private LinkedList<Arret> mesArrets;

@@ -1,10 +1,6 @@
 package test;
 
-import main.Arret;
-import main.Ligne;
 import main.Reseau;
-
-import org.junit.Test;
 
 import Client.ClientController;
 import Client.InterfaceClient;

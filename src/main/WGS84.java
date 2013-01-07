@@ -30,4 +30,8 @@ public class WGS84 {
 		this.p.setY(y);
 	}
 	
+	@Override
+	public String toString() {
+		return "X : " + getX() + " Y : " + getY();
+	}
 }

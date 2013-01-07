@@ -27,9 +27,11 @@ import main.Reseau;
 public class InterfaceClient extends JFrame  implements Observer{
 
 	/**
-	 * generated serialID
+	 * Required for serialization support.
+	 * @see java.io.Serializable
 	 */
-	private static final long serialVersionUID = -5998576006995849054L;
+	private static final long serialVersionUID = -8928087414286881654L;
+
 
 	private Reseau reseauModel;
 
