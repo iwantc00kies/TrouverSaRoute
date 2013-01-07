@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class PanelLogin extends AbstractPanel implements ActionListener { 
+public class PanelLogin extends AbstractPanel  implements ActionListener { 
 
 	private JButton submit;
 	private JTextField userText;

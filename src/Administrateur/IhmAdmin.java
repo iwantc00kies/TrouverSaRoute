@@ -27,6 +27,7 @@ public class IhmAdmin extends AbstractCardLayout {
 
 	final static String LOGINPANEL = "Authentification pour administrateur";
 	final static String MENUPANEL = "Menu d'administration";
+	final static String MODIFRESEAUPANEL = "Modifier le réseau";
 
 	public IhmAdmin() {}
 
@@ -62,11 +63,13 @@ public class IhmAdmin extends AbstractCardLayout {
 		//Create the "cards".
 		JPanel cardLogin = new PanelLogin(this, controler);
 		JPanel cardMenu = new PanelMenu(this, controler);
+		JPanel cardModifReseau = new PanelModifierReseau(this, controler);
 
 		//Create the panel that contains the "cards".
 		cards = new JPanel(new CardLayout());
 		cards.add(cardMenu, MENUPANEL);
 		cards.add(cardLogin, LOGINPANEL);
+		cards.add(cardModifReseau, MODIFRESEAUPANEL);
 		
 
 		pane.add(cards, BorderLayout.CENTER);

@@ -1,8 +1,11 @@
 package Administrateur;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JPanel;
 
-public abstract class AbstractPanel extends JPanel {
+public abstract class AbstractPanel extends JPanel  {
 	
 	protected AbstractCardLayout cardLayout;
 	protected CtrlAbstract controler; 
@@ -17,5 +20,6 @@ public abstract class AbstractPanel extends JPanel {
 	
 	protected abstract void initComposants();
 	protected abstract void ajoutListeners();
+
 	
 }
