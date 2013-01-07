@@ -11,6 +11,7 @@ public class ModelAuth extends ModelAbstract {
 	
 	public ModelAuth() {
 		super();
+		this.mesComptes.add(new EntityCompteAdmin("admin", "password"));
 	}
 
 	String retrievePasswordOf(String username) { 

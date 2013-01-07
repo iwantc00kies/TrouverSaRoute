@@ -3,14 +3,13 @@ package Administrateur;
 
 public abstract class CtrlAbstract {
 
-	protected ModelAbstract modelAuth;
-	protected ModelAbstract modelRes;
+	protected ModelAbstract model;
 	protected AbstractCardLayout ihmAdmin;
 	
-	public CtrlAbstract(ModelAbstract modelAuth, ModelAbstract modelRes, AbstractCardLayout ihmAdmin) {
-		this.modelAuth = modelAuth;
-		this.modelRes = modelRes;
+	public CtrlAbstract(ModelAbstract modelAuth, AbstractCardLayout ihmAdmin) {
+		this.model = modelAuth;
 		this.ihmAdmin = ihmAdmin;
 	}
 	
+	protected abstract void control();
 }

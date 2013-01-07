@@ -3,47 +3,58 @@ package Administrateur;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import main.Reseau;
 
 
 public class CtrlAuth extends CtrlAbstract {
 	
+	private boolean isAuthentifie = false;
 
-	public CtrlAuth(ModelAbstract modelAuth, ModelAbstract modelRes, AbstractCardLayout ihmAdmin) {
-		super(modelAuth, modelRes, ihmAdmin);
-		
-		String username = ((PanelLogin) ihmAdmin.cardLogin).getUserText().getText();
+	public CtrlAuth(ModelAbstract modelAuth, AbstractCardLayout ihmAdmin) {
+		super(modelAuth, ihmAdmin);
 		
 		// Comportement du bouton de login
 		((AbstractPanel) ihmAdmin.cardLogin).ajoutListeners( new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				test();
-				
+				control();
 			}
 			
 		});
 			
 	}
 	
-	protected void test() {
-		this.ihmAdmin.changeToPanel(IhmAdmin.MENUPANEL);
+	protected void control() {
+		
+		String username = ((PanelLogin) ihmAdmin.cardLogin).getUserText().getText();
+		String password = ((PanelLogin) ihmAdmin.cardLogin).getPasswordField().getText();
+
+		if( doTheyMatch(username, password) ) {
+			isAuthentifie = true;
+			this.ihmAdmin.changeToPanel(IhmAdmin.MENUPANEL);
+		}
+		else {
+			System.out.println("Enter an invalid username and password");
+			authentificationEchouee();
+		}
 	}
 	
-/*
-	boolean control() {
-		return (this.password.compareTo(this.realPassword) == 0 );
-	}
+	protected void authentificationReussie() {
 
+	}
+	
+	protected void authentificationEchouee() {
+		JOptionPane.showMessageDialog(null, "Incorrect login or password", "Error", JOptionPane.ERROR_MESSAGE);
+	}
+	
 	boolean doTheyMatch(String username, String password) {
-	
-		this.username 		= username;
-		this.password 		= password;
-		this.realPassword 	= model.retrievePasswordOf(username);
-		return control();
-
+		
+		String realPassword = ((ModelAuth) model).retrievePasswordOf(username);
+		
+		return (password.compareTo(realPassword) == 0 );
 	}
-*/
+	
 }
