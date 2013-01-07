@@ -1,12 +1,6 @@
 package test;
 
 import main.Reseau;
-import Administrateur.AbstractCardLayout;
-import Administrateur.CtrlAbstractAuth;
-import Administrateur.CtrlAuth;
-import Administrateur.IhmAuth;
-import Administrateur.ModelAbstractAuth;
-import Administrateur.ModelAuth;
 import Client.ClientController;
 import Client.InterfaceClient;
 

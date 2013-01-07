@@ -2,6 +2,8 @@ package Client;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import Administrateur.ModelAbstract;
 import main.Reseau;
 
 
@@ -14,8 +16,8 @@ public class ClientController {
 	/** Constructor 
 	 * @param client 
 	 * @param res **/
-	public ClientController(Reseau reseau, InterfaceClient client) {
-		this.modeleReseau = reseau;
+	public ClientController(ModelAbstract modelRes, InterfaceClient client) {
+		this.modeleReseau = (Reseau) modelRes;
 		this.vueClient = client;
 		
 		// comportement du bouton Rechercher de la vue client
