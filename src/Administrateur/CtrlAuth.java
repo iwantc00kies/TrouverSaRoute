@@ -16,7 +16,7 @@ public class CtrlAuth extends CtrlAbstract {
 		super(modelAuth, ihmAdmin);
 		
 		// Comportement du bouton de login
-		((AbstractPanel) ihmAdmin.cardLogin).mainListener( new ActionListener() {
+		((AbstractPanel) ihmAdmin.cardLogin).actionListeners( new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {

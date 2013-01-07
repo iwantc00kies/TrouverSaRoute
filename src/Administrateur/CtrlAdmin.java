@@ -12,14 +12,14 @@ public class CtrlAdmin extends CtrlAbstract {
 		super(modelRes, ihmAdmin);
 		this.ctrlAuth = ctrlAuth;
 		
-		((AbstractPanel) ihmAdmin.cardMenu).mainListener( new ActionListener() {
+		((AbstractPanel) ihmAdmin.cardMenu).actionListeners( new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				control();			
 			}
 		});
-		
+		/*
 		((PanelMenu) ihmAdmin.cardMenu).deconnexionListener( new ActionListener() {
 
 			@Override
@@ -53,12 +53,11 @@ public class CtrlAdmin extends CtrlAbstract {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				
 			}
 			
 		});
-		
+		*/
 		
 	}
 

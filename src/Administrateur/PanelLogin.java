@@ -60,7 +60,7 @@ public class PanelLogin extends AbstractPanel {
 		this.add(loginPanel, BorderLayout.CENTER);
 	}
 	
-	public void mainListener(ActionListener al) {
+	public void actionListeners(ActionListener al) {
 		this.submit.addActionListener(al);
 	}
 	
