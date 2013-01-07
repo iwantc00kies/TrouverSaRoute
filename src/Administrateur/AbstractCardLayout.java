@@ -13,6 +13,6 @@ public abstract class AbstractCardLayout {
 	
 	public abstract void changeToPanel(String panelName);
 
-	public abstract void addComponentToPane(Container pane, CtrlAbstractAuth controler);
+	public abstract void addComponentToPane(Container pane, CtrlAbstract controler);
 
 }

@@ -6,7 +6,7 @@ public abstract class AbstractPanel extends JPanel {
 	
 	protected AbstractCardLayout cardLayout;
 	protected String nextPanel;
-	protected CtrlAbstractAuth controler;  
+	protected CtrlAbstract controler;  
 	
 	
 	protected abstract void initComposants();

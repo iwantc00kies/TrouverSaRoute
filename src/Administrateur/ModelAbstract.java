@@ -2,18 +2,18 @@ package Administrateur;
 
 import java.util.ArrayList;
 
-public abstract class ModelAbstractAuth {
+public abstract class ModelAbstract {
 	
 	protected ArrayList<EntityCompteAdmin> mesComptes = new ArrayList<EntityCompteAdmin>();
 	
-	public ModelAbstractAuth() {
+	public ModelAbstract() {
 		
 			// Init des comptes
 			this.addCompteAdmin( new EntityCompteAdmin("admin", "password" ) );
 			
 	}
 	
-	public void addObserver(IhmAuth connexion) {
+	public void addObserver(IhmAdmin connexion) {
 		// TODO Auto-generated method stub
 	}
 	

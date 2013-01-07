@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.ListIterator;
 
 
-public class ModelAuth extends ModelAbstractAuth {
+public class ModelAuth extends ModelAbstract {
 
 	public ModelAuth() {
 		super();

@@ -1,10 +1,10 @@
 package main;
 
 import Administrateur.AbstractCardLayout;
-import Administrateur.CtrlAbstractAuth;
+import Administrateur.CtrlAbstract;
 import Administrateur.CtrlAuth;
-import Administrateur.IhmAuth;
-import Administrateur.ModelAbstractAuth;
+import Administrateur.IhmAdmin;
+import Administrateur.ModelAbstract;
 import Administrateur.ModelAuth;
 import Client.ClientController;
 import Client.InterfaceClient;
@@ -19,14 +19,15 @@ public class main {
 		
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
+				
 				// Instanciation de notre modèle
-				ModelAbstractAuth authentification = new ModelAuth();
+				ModelAbstract model = new ModelAuth();
 
 				// Création du contrôleur
-				CtrlAbstractAuth controler = new CtrlAuth(authentification);
+				CtrlAbstract controler = new CtrlAuth(model);
 
 				// Création de l'IHM correspondant
-				AbstractCardLayout pageAdmin = new IhmAuth(controler);
+				AbstractCardLayout pageAdmin = new IhmAdmin(model, controler);
 			}
 		});
 		

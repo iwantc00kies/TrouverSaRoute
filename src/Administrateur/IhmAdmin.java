@@ -23,7 +23,7 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
 
-public class IhmAuth extends AbstractCardLayout {
+public class IhmAdmin extends AbstractCardLayout {
 	
 	JPanel cards; //a panel that uses CardLayout
 	
@@ -33,23 +33,23 @@ public class IhmAuth extends AbstractCardLayout {
 	
 	// TODO : essayer de faire fonctionner avec un private controler ici!
 	
-	public IhmAuth() {
+	public IhmAdmin() {
 		
 	}
 	
-	public IhmAuth(CtrlAbstractAuth controler) {
+	public IhmAdmin(ModelAbstract mode, CtrlAbstract controler) {
 		this.createAndShowGUI(controler);
 	}
 
 	//public static void createAndShowGUI(CtrlAbstractAuth controler) {
-	public void createAndShowGUI(CtrlAbstractAuth controler) {
+	public void createAndShowGUI(CtrlAbstract controler) {
 		
 		//Create and set up the window.
 		JFrame frame = new JFrame("CardLayoutDemo");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		//Create and set up the content pane.
-		AbstractCardLayout demo = new IhmAuth();
+		AbstractCardLayout demo = new IhmAdmin();
 		demo.addComponentToPane(frame.getContentPane(), controler);
 
 		//Display the window.
@@ -64,7 +64,7 @@ public class IhmAuth extends AbstractCardLayout {
 	}
 
 	@Override
-	public void addComponentToPane(Container pane, CtrlAbstractAuth controler) {
+	public void addComponentToPane(Container pane, CtrlAbstract controler) {
 
 		//Create the "cards".
 		JPanel cardLogin = new PanelLogin(this, MENUPANEL, controler);
@@ -77,5 +77,4 @@ public class IhmAuth extends AbstractCardLayout {
 
 	        pane.add(cards, BorderLayout.CENTER);
 	}
-
 }

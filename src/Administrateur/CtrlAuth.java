@@ -1,9 +1,13 @@
 package Administrateur;
 
 
-public class CtrlAuth extends CtrlAbstractAuth {
+public class CtrlAuth extends CtrlAbstract {
 
-	public CtrlAuth(ModelAbstractAuth model) {
+	protected String username;
+	protected String password;
+	protected String realPassword;
+	
+	public CtrlAuth(ModelAbstract model) {
 		super ( model );
 	}
 
@@ -12,6 +16,16 @@ public class CtrlAuth extends CtrlAbstractAuth {
 		
 		return (this.password.compareTo(this.realPassword) == 0 );
 		
+	}
+
+	@Override
+	boolean doTheyMatch(String username, String password) {
+	
+		this.username 		= username;
+		this.password 		= password;
+		this.realPassword 	= model.retrievePasswordOf(username);
+		return control();
+
 	}
 
 }

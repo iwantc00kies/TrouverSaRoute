@@ -22,7 +22,7 @@ public class PanelLogin extends AbstractPanel implements ActionListener {
 
 
 	public PanelLogin(AbstractCardLayout ihmAuth, String menuPanel,
-			CtrlAbstractAuth controlerClass) {
+			CtrlAbstract controlerClass) {
 		this.cardLayout 	= ihmAuth;
 		this.nextPanel 		= menuPanel;
 		this.controler 		= controlerClass;
@@ -69,7 +69,7 @@ public class PanelLogin extends AbstractPanel implements ActionListener {
 		String password = passwordField.getText();
 
 		if ( this.controler.doTheyMatch(username, password) ) {
-		//if ( true ) {
+
 			this.cardLayout.changeToPanel(nextPanel);
 
 		}
