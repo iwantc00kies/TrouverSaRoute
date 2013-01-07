@@ -16,7 +16,7 @@ public class CtrlAuth extends CtrlAbstract {
 		super(modelAuth, ihmAdmin);
 		
 		// Comportement du bouton de login
-		((AbstractPanel) ihmAdmin.cardLogin).ajoutListeners( new ActionListener() {
+		((AbstractPanel) ihmAdmin.cardLogin).mainListener( new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -38,16 +38,17 @@ public class CtrlAuth extends CtrlAbstract {
 		}
 		else {
 			System.out.println("Enter an invalid username and password");
-			authentificationEchouee();
+			JOptionPane.showMessageDialog(null, "Incorrect login or password", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	
-	protected void authentificationReussie() {
 
+	public boolean isAuthentifie() {
+		return isAuthentifie;
 	}
-	
-	protected void authentificationEchouee() {
-		JOptionPane.showMessageDialog(null, "Incorrect login or password", "Error", JOptionPane.ERROR_MESSAGE);
+
+	public void setAuthentifie(boolean isAuthentifie) {
+		this.isAuthentifie = isAuthentifie;
 	}
 	
 	boolean doTheyMatch(String username, String password) {

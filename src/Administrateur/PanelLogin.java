@@ -60,34 +60,8 @@ public class PanelLogin extends AbstractPanel {
 		this.add(loginPanel, BorderLayout.CENTER);
 	}
 	
-	public void ajoutListeners(ActionListener al) {
+	public void mainListener(ActionListener al) {
 		this.submit.addActionListener(al);
 	}
 	
-	
-/* !!!!!! dans le controleur
- * 
-	protected void ajoutListeners() {
-
-		// Ajout des �couteurs
-		this.submit.addActionListener(this);
-
-	}
- 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-
-		String username = userText.getText();
-		String password = passwordField.getText();
-
-		// Appel du controleur afin de vérifier 
-		if ( this.controler.doTheyMatch(username, password) ) {
-			this.cardLayout.changeToPanel(IhmAdmin.MENUPANEL);
-		}
-		else{
-			System.out.println("Enter an invalid username and password");
-			JOptionPane.showMessageDialog(submit, "Incorrect login or password", "Error", JOptionPane.ERROR_MESSAGE);
-		}
-	}
-*/
 }

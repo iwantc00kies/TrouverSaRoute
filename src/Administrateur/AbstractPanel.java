@@ -20,6 +20,6 @@ public abstract class AbstractPanel extends JPanel  {
 	
 	protected abstract void initComposants();
 	
-	public abstract void ajoutListeners(ActionListener al);
+	public abstract void mainListener(ActionListener al);
 	
 }

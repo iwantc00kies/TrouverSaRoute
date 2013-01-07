@@ -22,7 +22,7 @@ public class PanelModifierReseau extends AbstractPanel {
 	}
 
 	@Override
-	public void ajoutListeners(ActionListener al) {
+	public void mainListener(ActionListener al) {
 		// TODO Auto-generated method stub
 		
 	}

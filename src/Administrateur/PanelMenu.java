@@ -21,6 +21,7 @@ public class PanelMenu extends AbstractPanel {
 	private JTextField urlLignes;
 	private JButton voirReseau;
 	private JButton modifierReseau;
+	private JButton deconnexion;
 
 	private boolean isArretsCharges = false;
 	private boolean isLignesChargees = false;
@@ -39,6 +40,7 @@ public class PanelMenu extends AbstractPanel {
 		urlLignes = new JTextField("Copier chemin du fichier csv");
 		voirReseau = new JButton("Voir le réseau");
 		modifierReseau = new JButton("Modifier le réseau");
+		deconnexion = new JButton("Deconnection");
 
 		JPanel menuAdmin = new JPanel(new GridLayout(3,2));
 		menuAdmin.add(chargerArrets);
@@ -47,6 +49,7 @@ public class PanelMenu extends AbstractPanel {
 		menuAdmin.add(urlLignes);
 		menuAdmin.add(modifierReseau);
 		menuAdmin.add(modifierReseau);
+		menuAdmin.add(deconnexion);
 		
 		this.add(menuAdmin);
 	}
@@ -101,8 +104,25 @@ public class PanelMenu extends AbstractPanel {
 	*/
 
 	@Override
-	public void ajoutListeners(ActionListener al) {
-		// TODO Auto-generated method stub
+	public void mainListener(ActionListener actionListener) {
+		this.deconnexion.addActionListener(actionListener);
+	}
+	
+	public void deconnexionListener(ActionListener actionListener) {
+		this.deconnexion.addActionListener(actionListener);
+	}
+
+	public void chargerArretsListener(ActionListener actionListener) {
+		//this.deconnexion.addActionListener(actionListener);
+	}
+
+	public void chargerLignesListener(ActionListener actionListener) {
+		//this.deconnexion.addActionListener(actionListener);
+		
+	}
+
+	public void voirReseauListener(ActionListener actionListener) {
+		// this.deconnexion.addActionListener(actionListener);
 		
 	}
 }
