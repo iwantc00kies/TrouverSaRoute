@@ -18,12 +18,21 @@ public class Arret {
 	protected ArrayList<Arret> arretSuivants = new ArrayList<Arret>(1);
 	protected ArrayList<Arret> arretPrecedant = new ArrayList<Arret>(1);
 	
-	protected Arret(String nom) {
+	/**
+	 * Constructeur
+	 * @param nom		le nom de l'arret
+	 */
+	public Arret(String nom) {
 		setNom(nom);
 		lignes = new LinkedList<String>();
 		coord = new WGS84();
 	}
 
+	
+	/**
+	 * Indique a l'arret son accessibilite ou non aux personnes a mobilite reduites
+	 * @param estAccessible			vrai => accessible aux PMR, faix sinon
+	 */
 	public void setEstAccessible(String estAccessible) {
 		final String[] ok = new String[] {"O","o","Oui","oui", "y", "Y", "Yes", "yes"};
 
