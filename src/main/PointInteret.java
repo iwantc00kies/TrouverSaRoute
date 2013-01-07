@@ -22,4 +22,10 @@ public class PointInteret extends Arret{
 		this.descriptif = descriptif;
 	}
 
+	public void Afficher(){
+		super.Afficher();
+		System.out.println("Site : " +this.nomSite);
+		System.out.println("Descriptif : " +this.descriptif);
+
+	}
 }
